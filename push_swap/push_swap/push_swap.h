@@ -14,20 +14,33 @@ typedef struct s_node
     struct s_node *next;
     struct s_node *prev;
     int             pos;
+    int             flags;
     
 }               t_node;
 
 typedef struct s_stacks
 {
-    t_node *head_a;
-    t_node *head_b;
-    int     len_a;
-    int     len_b;
+    t_node  *head_a;
+    t_node  *head_b;
+    int     count;
+    //int     len_a;
+    //int     len_b;
 
 }               t_stacks;
 
+//----push_swap---/
 
-int checker(t_stacks stacks);
+int push_swap(t_stacks vars);
+t_node    *ft_subsequence(t_node *stack_a);
+t_stacks  ft_sort_stacks(t_stacks gen);
+int ft_max_flag(t_node *stack);
+int ft_check_maxflag(t_node *stack, int max_flag);
+
+//------utils3.c-----//
+
+void	*ft_put_ones(size_t count);
+
+//-------------//
 
 char    **ft_split(char *s, char d);
 

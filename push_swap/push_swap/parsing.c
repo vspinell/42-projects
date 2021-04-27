@@ -45,6 +45,8 @@ t_node  *ft_stack(int count, char **arguments)
             free(arg[j - 1]);
             new->next = 0;
             new->prev = 0;
+            new->pos = 0;
+            new->flags = 0;
             if (head == 0)
                 head = new;
             else

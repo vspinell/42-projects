@@ -56,13 +56,13 @@ int ft_rotate(t_node **head)
 
     //stampa
 
-    t_node *stamp = *head;
+    /*t_node *stamp = *head;
     while (stamp)
     {
         printf("[%d] ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 
@@ -139,14 +139,14 @@ int ft_push(t_node **dst, t_node **src)
 
     //stampa
 
-    puts("stack A");
+    /*puts("stack A");
     t_node *stamp = *src;
     while (stamp)
     {
         printf("%d ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    printf("\n");
     puts("stack B");
     t_node *stamp2 = *dst;
     while (stamp2)
@@ -154,6 +154,6 @@ int ft_push(t_node **dst, t_node **src)
         printf("%d ", stamp2->num);
         stamp2 = stamp2->next;
     }
-    puts("");
+    printf("\n");*/
     return (1);
 }
