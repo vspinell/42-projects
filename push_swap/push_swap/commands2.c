@@ -31,14 +31,18 @@ int ft_swap(t_node **head)
     return (1);
 }
 
-int ft_rotate(t_node **head)
+int ft_rotate(t_node **head, t_stacks *gen)
 {
     t_node *new;
     t_node *last;
     t_node *first;
+    int     ra;
 
+    ra = 1;
     if (!*head || !(*head)->next)
         return (1);
+    if (*head == gen->head_b)
+        ra = 0;
     first = *head; //tengo la posizione del primo
     new = malloc(sizeof(t_node));
     if (!new)
@@ -54,6 +58,11 @@ int ft_rotate(t_node **head)
     new->prev = last;
     free(first);
 
+    gen->count++;
+    if (ra == 1)
+        write(1, "ra\n", 3);
+    else
+        write(1, "rb\n", 3);
     //stampa
 
     /*t_node *stamp = *head;
@@ -66,55 +75,62 @@ int ft_rotate(t_node **head)
     return (1);
 }
 
-int ft_rev_rotate(t_node **head)
+int ft_rev_rotate(t_node **head, t_stacks *gen)
 {
     t_node *first;
     t_node *last;
     t_node *tmp;
+    int     rra;
 
+    rra = 0;
     if (!*head || !(*head)->next)
         return (1);
+    if (*head == gen->head_a)
+        rra = 1;
     first = malloc(sizeof(t_node));
     if(!first)
         return (0);
     last = *head;
     while (last->next)
     last = last->next;
-    //definisco elementi del nodo
     first->next = *head;
     first->prev = 0;
     first->num = last->num;
-    //riassegno la fine e l'inizio
     tmp = last;
     tmp = tmp->prev;
     tmp->next = 0;
     free(last);
-    //last = last->prev;
-    //last->next = 0;
-    //free(last->next);
-    //last->next = 0;
     (*head)->prev = first;
     *head = first;
 
+    gen->count++;
+    if (rra == 1)
+        write(1, "rra\n", 4);
+    else
+        write(1, "rrb\n", 4);
     //stampa
 
-    t_node *stamp = *head;
+   /* t_node *stamp = *head;
     while (stamp)
     {
         printf("[%d] ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 
-int ft_push(t_node **dst, t_node **src)
+int ft_push(t_node **dst, t_node **src, t_stacks *gen)
 {
     t_node *new;
     t_node *erase;
+    int     pb;
 
+    pb = 0;
     if (!*src)
         return (1);
+    if (*dst == gen->head_b)
+        pb = 1;
     new = malloc(sizeof(t_node));
     if (!new)
         return (0);
@@ -137,6 +153,11 @@ int ft_push(t_node **dst, t_node **src)
     *src = (*src)->next;
     free(erase);
 
+    gen->count++;
+    if (pb == 1)
+        write(1, "pb\n", 3);
+    else
+        write(1, "pa\n", 3);
     //stampa
 
     /*puts("stack A");
