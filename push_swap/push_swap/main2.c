@@ -17,9 +17,7 @@ int main(int ac, char **av)
     t_stacks init_a;
 
     init_a.head_a = ft_stack(ac, av);
-    if (push_swap(init_a) == -1)
-        exit(EXIT_FAILURE);
-    
+    push_swap(init_a);
     /*t_node *stamp = init_a.head_a;
     while (stamp)
     {

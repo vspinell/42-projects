@@ -1,30 +1,90 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vspinell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/05 18:39:58 by vspinell          #+#    #+#             */
+/*   Updated: 2021/05/05 18:40:04 by vspinell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int push_swap(t_stacks gen)
+t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 {
-    int ret;
+	while (pos[0] || pos[1])
+	{
+		if ((best->pos_a <= len[0] / 2 && best->pos <= len[1] / 2)
+			&& (pos[0] && pos[1]))
+		{
+			ft_rotate(&gen.head_a);
+			ft_rotate(&gen.head_b);
+			write(1, "rr\n", 3);
+			pos[0]--;
+			pos[1]--;
+		}
+		else if ((best->pos_a > len[0] / 2 && best->pos > len[1] / 2)
+			&& (pos[0] && pos[1]))
+		{
+			ft_rev_rotate(&gen.head_a);
+			ft_rev_rotate(&gen.head_b);
+			write(1, "rrr\n", 4);
+			pos[0]--;
+			pos[1]--;
+		}
+		else if ((best->pos_a > len[0] / 2) && pos[0])
+		{
+			ft_rev_rotate(&gen.head_a);
+			write(1, "rra\n", 4);
+			pos[0]--;
+		}
+		else if ((best->pos_a <= len[0] / 2) && pos[0])
+		{
+			ft_rotate(&gen.head_a);
+			write(1, "ra\n", 3);
+			pos[0]--;
+		}
+		else if ((best->pos > len[1] / 2) && pos[1])
+		{
+			ft_rev_rotate(&gen.head_b);
+			write(1, "rrb\n", 4);
+			pos[1]--;
+		}
+		else if ((best->pos <= len[1] / 2) && pos[1])
+		{
+			ft_rotate(&gen.head_b);
+			write(1, "rb\n", 3);
+			pos[1]--;
+		}
+	}
+	 ft_push(&gen.head_a, &gen.head_b);
+	 write(1, "pa\n", 3);
+	return (gen);
+}
 
-    ret = 1;
-    gen.count = 0;
-    gen = ft_subsequence(gen);
+int	push_swap(t_stacks gen)
+{
+	int		ret;
+	t_node	*best;
+	int		pos[2];
+	int		len[2];
 
-//stampo
-   t_node *stamp_a = gen.head_a;
-    puts("stack A content");
-    while (stamp_a)
-    {
-        printf("%d\n", stamp_a->num);
-        stamp_a = stamp_a->next;
-    }
-    
-    t_node *stamp_b = gen.head_b;
-    puts("stack B content");
-    while (stamp_b)
-    {
-        printf("%d\n", stamp_b->num);
-        stamp_b = stamp_b->next;
-    }
-    return (ret);
+	ret = 1;
+	gen = ft_subsequence(gen);
+	gen = ft_tot_movs(gen);
+	best = ft_best_move(gen.head_b);
+	while (gen.head_b)
+	{
+		gen = ft_tot_movs(gen);
+		len[0] = ft_list_len(&gen.head_a);
+		len[1] = ft_list_len(&gen.head_b);
+		best = ft_best_move(gen.head_b);
+		pos[0] = best->movs_A;
+		pos[1] = best->movs_B;
+		gen = ft_doit(gen, best, len, pos);
+	}
+	gen.head_a = ft_reorder_stack(gen.head_a);
+	exit(EXIT_SUCCESS);
 }

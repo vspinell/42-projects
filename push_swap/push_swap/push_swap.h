@@ -10,38 +10,63 @@
 //---per push swap--/
 typedef struct s_node
 {
-    int             num;
-    struct s_node *next;
-    struct s_node *prev;
-    int             pos;
-    int             flags;
-    int             star;
-    int             len_A;
-    int             len_B;
-    
-}               t_node;
+	int				num;
+	struct s_node *next;
+	struct s_node *prev;
+	int				pos;
+	int				pos_a;
+	int				flags;
+	int				star;
+	int				movs_A;
+	int				movs_B;
+	int				tot_movs;
+	int				dir;
+	int				len_a;
+	int				len_b;
+}				t_node;
 
 typedef struct s_stacks
 {
-    t_node  *head_a;
-    t_node  *head_b;
-    int     count;
-    //int     len_a;
-    //int     len_b;
+	t_node  *head_a;
+	t_node  *head_b;
+	//int     len_a;
+	//int     len_b;
 
 }               t_stacks;
+
+//-----best_move2.c----------/ norminettato e completo
+int        ft_pos_a(t_node *stack_a);
+t_node    *ft_clean_stars(t_node *stack);
+int        max_stackA(t_node *head);
+void    ft_find_Apos(t_stacks *gen);
+int        ft_movs_a(t_node node, int len_A);
+
+//-----utils4.c---//norminettato e completo
+
+t_node	*ft_best_move(t_node *stack);
+t_node	*ft_findpos(t_node *stackA, int position);
+int		ft_refreshpos(t_node *head, t_node *best);
+t_node	*ft_min_stackA(t_node *head);
+t_node  *ft_reorder_stack(t_node *head_a);
+//-----best_move2.c----------/
+
+t_node	    *ft_moves(t_node *stack);
+t_stacks	ft_tot_movs(t_stacks gen);
+
+
 
 //----push_swap---/
 
 int push_swap(t_stacks vars);
+int     ft_pos_a(t_node *stack_a);
+
+
 t_node  *ft_init_flags(t_node *stack_a);
 t_node    *ft_put_flags(t_node *stack_a);
 int ft_max_flag(t_node *stack);
-int ft_list_len(t_node **stack);
 t_stacks  ft_subsequence(t_stacks gen);
 t_node *ft_put_stars(t_node *head_a, int max_flag);
 int ft_min_numb(t_node *stack);
-t_node *ft_reorder_stack(t_node *head_a, t_stacks gen);
 
 t_stacks  ft_sort_stacks(t_stacks gen);
 //int ft_max_flag(t_node *stack);
@@ -49,7 +74,7 @@ int ft_check_maxflag(t_node *stack, int max_flag);
 
 //------utils3.c-----//
 
-void	*ft_put_ones(size_t count);
+int ft_list_len(t_node **stack);
 
 //-------------//
 
@@ -74,9 +99,9 @@ int     ft_isspace(char c);
 //---commands---// (full)
 
 int ft_swap(t_node **stack);
-int ft_rotate(t_node **head, t_stacks *gen);
-int ft_rev_rotate(t_node **head, t_stacks *gen);
-int ft_push(t_node **dst, t_node **src, t_stacks *gen);
+int ft_rotate(t_node **head);
+int ft_rev_rotate(t_node **head);
+int ft_push(t_node **dst, t_node **src);
 int ft_result(t_stacks *stacks);
 
 # endif

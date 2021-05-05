@@ -48,6 +48,7 @@ int	get_next_line(char **line)
 	int		ret;
 	char	buff;
 
+	ret = 0;
 	if (!line)
 		return (ret);
 	*line = malloc(1);
