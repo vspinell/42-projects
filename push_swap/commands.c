@@ -1,5 +1,5 @@
 
-#include "../checker.h"
+#include "push_swap.h"
 
 int ft_swap(t_data **head)
 {
@@ -20,14 +20,14 @@ int ft_swap(t_data **head)
 
     //stampa
 
-    t_data *stamp = *head;
+    /*t_data *stamp = *head;
         puts("dentro la funziuone");
     while (stamp)
     {
         printf("%d ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 
@@ -56,13 +56,13 @@ int ft_rotate(t_data **head)
 
     //stampa
 
-    t_data *stamp = *head;
+    /*t_data *stamp = *head;
     while (stamp)
     {
         printf("[%d] ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 
@@ -98,13 +98,13 @@ int ft_rev_rotate(t_data **head)
 
     //stampa
 
-    t_data *stamp = *head;
+    /*t_data *stamp = *head;
     while (stamp)
     {
         printf("[%d] ", stamp->num);
         stamp = stamp->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 
@@ -139,7 +139,7 @@ int ft_push(t_data **dst, t_data **src)
 
     //stampa
 
-    puts("stack A");
+    /*puts("stack A");
     t_data *stamp = *src;
     while (stamp)
     {
@@ -154,7 +154,7 @@ int ft_push(t_data **dst, t_data **src)
         printf("%d ", stamp2->num);
         stamp2 = stamp2->next;
     }
-    puts("");
+    puts("");*/
     return (1);
 }
 

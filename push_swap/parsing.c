@@ -1,4 +1,4 @@
-#include "../checker.h"
+#include "push_swap.h"
 
 t_data  *ft_stack(int count, char **arguments)
 {

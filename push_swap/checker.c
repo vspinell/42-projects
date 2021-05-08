@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker.h"
+#include "push_swap.h"
 
 int ft_commands(char *line, t_head *stacks)
 {

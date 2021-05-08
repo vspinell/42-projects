@@ -64,7 +64,7 @@ t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 	return (gen);
 }
 
-int	push_swap(t_stacks gen)
+int	push_swap(t_stacks gen, int leng)
 {
 	int		ret;
 	t_node	*best;
@@ -72,7 +72,10 @@ int	push_swap(t_stacks gen)
 	int		len[2];
 
 	ret = 1;
-	gen = ft_subsequence(gen);
+	if (leng <= 5)
+		gen = light_push_swap(gen, leng);
+	else
+		gen = ft_subsequence(gen);
 	gen = ft_tot_movs(gen);
 	best = ft_best_move(gen.head_b);
 	while (gen.head_b)
@@ -86,5 +89,12 @@ int	push_swap(t_stacks gen)
 		gen = ft_doit(gen, best, len, pos);
 	}
 	gen.head_a = ft_reorder_stack(gen.head_a);
+	
+	/*t_node *stamp = gen.head_a;
+	while (stamp)
+	{
+		printf("%d\n", stamp->num);
+		stamp = stamp->next;
+	}*/
 	exit(EXIT_SUCCESS);
 }

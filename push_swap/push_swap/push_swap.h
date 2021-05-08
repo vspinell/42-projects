@@ -48,16 +48,17 @@ t_node	*ft_findpos(t_node *stackA, int position);
 int		ft_refreshpos(t_node *head, t_node *best);
 t_node	*ft_min_stackA(t_node *head);
 t_node  *ft_reorder_stack(t_node *head_a);
-//-----best_move2.c----------/
+//-----best_move.c----------/
 
-t_node	    *ft_moves(t_node *stack);
+t_node		*ft_moves(t_node *stack);
 t_stacks	ft_tot_movs(t_stacks gen);
+t_stacks	light_push_swap(t_stacks gen, int len);
 
 
 
 //----push_swap---/
 
-int push_swap(t_stacks vars);
+int push_swap(t_stacks vars, int len);
 int     ft_pos_a(t_node *stack_a);
 
 

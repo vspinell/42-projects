@@ -15,9 +15,14 @@
 int main(int ac, char **av)
 {
     t_stacks init_a;
+    int len;
 
     init_a.head_a = ft_stack(ac, av);
-    push_swap(init_a);
+    len = ft_list_len(&init_a.head_a);
+    /*if (len <= 5)
+        light_push_swap(init_a, len);
+    else*/
+        push_swap(init_a, len);
     /*t_node *stamp = init_a.head_a;
     while (stamp)
     {

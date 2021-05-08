@@ -20,14 +20,6 @@ int ft_swap(t_node **head)
 
     //stampa
 
-    t_node *stamp = *head;
-        puts("dentro la funziuone");
-    while (stamp)
-    {
-        printf("%d ", stamp->num);
-        stamp = stamp->next;
-    }
-    puts("");
     return (1);
 }
 
