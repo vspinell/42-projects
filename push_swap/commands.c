@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+#include "checker.h"
 
 int ft_swap(t_data **head)
 {

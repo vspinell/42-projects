@@ -19,6 +19,17 @@ int main(int ac, char **av)
 
     init_a.head_a = ft_stack(ac, av);
     len = ft_list_len(&init_a.head_a);
+    if (len == 1)
+        exit(EXIT_SUCCESS);
+    else if (len == 2)
+	{
+		if (init_a.head_a->num > init_a.head_a->next->num)
+		{
+			ft_swap(&init_a.head_a);
+			write(1, "sa\n", 3);
+		}
+		exit(EXIT_SUCCESS);
+	}
     /*if (len <= 5)
         light_push_swap(init_a, len);
     else*/

@@ -1,6 +1,6 @@
 
 
-#include "push_swap.h"
+#include "checker.h"
 
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {

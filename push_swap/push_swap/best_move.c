@@ -94,5 +94,5 @@ t_stacks	light_push_swap(t_stacks gen, int len)
 		write(1, "ra\n", 3);
 		write(1, "sa\n", 3);
 	}
-	return (gen);
+		return (gen);
 }
