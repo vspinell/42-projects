@@ -1,23 +1,50 @@
-NAME: checker.h
+NAME = checker
 
-SRCS: $(wildcard *.c)
-CC :	gcc
-CFLAGS: -Wall -Wextra -Werror
+NAME2 = push_swap
 
-OBJ : $(SRCS: .c = .o)
+SRCS =  checker.c \
+		commands.c \
+		ft_split.c \
+		main.c \
+		utils.c \
+		utils2.c \
+		parsing.c
 
-%o	:	%c
-$(NAME) :	$(OBJ)
-			ar rcs $(NAME) $(OBJ)
+SRCS2 =  push_swap.c \
+		commands2.c \
+		utilsP.c \
+		utils2P.c \
+		utils3P.c \
+		utils4P.c \
+		subsequence.c \
+		ft_split.c \
+		best_move.c \
+		best_move2.c \
+		main2.c \
+		parsing2.c
 
-all :  $(NAME)
+OBJS = $(SRCS:.c=.o)
 
-re :	all
-		$(CC) $(CFLAGS) main.c $(NAME) -o test
-fclean  :       clean
-                rm -rf test
-                rm -rf ${NAME}
+OBJS2 = $(SRCS2:.c=.o)
 
-re      :       fclean all
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
-.PHONY  :       all clean fclean re test
+all: 		$(NAME) $(NAME2)
+
+$(NAME): 	$(OBJS)
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+$(NAME2): 	$(OBJS2)
+			$(CC) $(CFLAGS) -o $(NAME2) $(OBJS2)
+
+clean: 		$(MAKE) clean
+			$(RM) $(OBJS) $(OBJS2)
+
+fclean: 	clean
+			$(RM) $(OBJS) $(OBJS2) $(NAME) $(NAME2)
+
+re: 		fclean $(NAME)
+
+.PHONY: 	all clean fclean re

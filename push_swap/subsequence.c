@@ -33,6 +33,8 @@ t_node	*ft_put_flags(t_node *stack_a)
 	t_node	*jump_next;
 
 	len = ft_list_len(&stack_a);
+	if (len == -1)
+		return (0);
 	stack_a = ft_init_flags(stack_a);
 	jump_next = stack_a;
 	while (jump_next->next)
@@ -98,7 +100,6 @@ t_stacks	ft_subsequence(t_stacks gen)
 {
 	int		len;
 	int		max_flag;
-	t_node	*last;
 
 	//-------->(prova a riattivare alla fine) <-------
 	//gen.head_a = ft_reorder_stack(gen.head_a, gen);
@@ -107,7 +108,6 @@ t_stacks	ft_subsequence(t_stacks gen)
 	max_flag = ft_max_flag(gen.head_a);
 	gen.head_a = ft_put_stars(gen.head_a, max_flag);
 	len = ft_list_len(&gen.head_a);
-	last = gen.head_a;
 	while (len--)
 	{
 		 if (gen.head_a->star == 0)

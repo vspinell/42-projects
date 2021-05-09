@@ -75,9 +75,7 @@ void	ft_find_Apos(t_stacks *gen)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	int		moves;
 
-	moves = 0;
 	stack_a = ft_clean_stars(gen->head_a);
 	stack_b = gen->head_b;
 	while (stack_b)

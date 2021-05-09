@@ -18,6 +18,8 @@ t_node	*ft_moves(t_node *stack)
 	int len_b = stack->len_b;
 	t_node	*scroll;
 
+	if (len_a == -1 || len_b == -1)
+		return (0);
 	scroll = stack;
 	while (scroll)
 	{

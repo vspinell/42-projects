@@ -66,12 +66,10 @@ t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 
 int	push_swap(t_stacks gen, int leng)
 {
-	int		ret;
 	t_node	*best;
 	int		pos[2];
 	int		len[2];
 
-	ret = 1;
 	if (leng <= 5)
 	{
 		gen = light_push_swap(gen, leng);

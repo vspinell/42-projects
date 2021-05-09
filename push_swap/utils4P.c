@@ -47,6 +47,8 @@ int	ft_refreshpos(t_node *head, t_node *best)
 	int	len;
 
 	len = ft_list_len(&head);
+		if (len == -1)
+		return (0);
 	while (head)
 	{
 		if (head == best)
