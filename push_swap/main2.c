@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_stacks init_a;
-    int len;
+	t_stacks	init_a;
+	int			len;
 
-    init_a.head_a = ft_stack(ac, av);
-    len = ft_list_len(&init_a.head_a);
-    if (len == 1)
-        exit(EXIT_SUCCESS);
-    else if (len == 2)
+	init_a.head_a = ft_stack(ac, av);
+	len = ft_list_len(&init_a.head_a);
+	if (len == 1 || ac == 1)
+		exit(EXIT_SUCCESS);
+	if (len == 2)
 	{
 		if (init_a.head_a->num > init_a.head_a->next->num)
 		{
@@ -30,14 +30,10 @@ int main(int ac, char **av)
 		}
 		exit(EXIT_SUCCESS);
 	}
-    /*if (len <= 5)
-        light_push_swap(init_a, len);
-    else*/
-        push_swap(init_a, len);
-    /*t_node *stamp = init_a.head_a;
-    while (stamp)
-    {
-        printf("%d ", stamp->num);
-        stamp = stamp->next;
-    }*/
+	else if (len == 3)
+	{
+		init_a = light_push_swap(init_a, len);
+		exit(EXIT_SUCCESS);
+	}
+	push_swap(init_a, len);
 }

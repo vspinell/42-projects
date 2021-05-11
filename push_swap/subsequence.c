@@ -12,20 +12,6 @@
 
 #include "push_swap.h"
 
-t_node	*ft_init_flags(t_node *stack_a)
-{
-	t_node	*tmp;
-
-	tmp = stack_a;
-	while (tmp)
-	{
-		tmp->flags = 1;
-		tmp = tmp->next;
-	}
-	tmp = stack_a;
-	return (tmp);
-}
-
 t_node	*ft_put_flags(t_node *stack_a)
 {
 	int		len;
@@ -101,8 +87,6 @@ t_stacks	ft_subsequence(t_stacks gen)
 	int		len;
 	int		max_flag;
 
-	//-------->(prova a riattivare alla fine) <-------
-	//gen.head_a = ft_reorder_stack(gen.head_a, gen);
 	gen.head_b = 0;
 	gen.head_a = ft_put_flags(gen.head_a);
 	max_flag = ft_max_flag(gen.head_a);

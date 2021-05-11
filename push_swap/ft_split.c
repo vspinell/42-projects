@@ -1,10 +1,20 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vspinell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/10 13:02:43 by vspinell          #+#    #+#             */
+/*   Updated: 2021/05/10 13:02:47 by vspinell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!(dst && src))
@@ -59,19 +69,18 @@ char	**ft_split(char *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(arr = malloc(sizeof(s) * (ft_strcount(s, c) + 1))))
-		return (NULL);
+	arr = malloc(sizeof(s) * (ft_strcount(s, c) + 1));
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
 			len = ft_strclen(s, c);
-			if (!(arr[i] = malloc(len + 1)))
+			arr[i] = malloc(len + 1);
+			if (!arr[i])
 				return (NULL);
-			ft_strlcpy(arr[i], s, len + 1);
+			ft_strlcpy(arr[i++], s, len + 1);
 			s += len;
-			i++;
 		}
 		else
 			s++;

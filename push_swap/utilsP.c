@@ -65,11 +65,6 @@ int	get_next_line(char **line)
 		else
 			return (1);
 	}
-	if (ret == -1)
-	{
-		free(*line);
-		*line = 0;
-	}
 	return (ret);
 }
 

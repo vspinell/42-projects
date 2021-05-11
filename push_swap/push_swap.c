@@ -12,6 +12,40 @@
 
 #include "push_swap.h"
 
+void	ft_doit2(t_stacks *gen, t_node **best, int len[2], int pos[2])
+{
+	if (((*best)->pos_a > len[0] / 2) && pos[0])
+	{
+		ft_rev_rotate(&(*gen).head_a);
+		write(1, "rra\n", 4);
+		pos[0]--;
+	}
+	else if (((*best)->pos_a <= len[0] / 2) && pos[0])
+	{
+		ft_rotate(&(*gen).head_a);
+		write(1, "ra\n", 3);
+		pos[0]--;
+	}
+	else if (((*best)->pos > len[1] / 2) && pos[1])
+	{
+		ft_rev_rotate(&(*gen).head_b);
+		write(1, "rrb\n", 4);
+		pos[1]--;
+	}
+	else if (((*best)->pos <= len[1] / 2) && pos[1])
+	{
+		ft_rotate(&(*gen).head_b);
+		write(1, "rb\n", 3);
+		pos[1]--;
+	}
+}
+
+void	ft_double_rotate(t_stacks *gen)
+{
+	ft_rotate(&gen->head_a);
+	ft_rotate(&gen->head_b);
+}
+
 t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 {
 	while (pos[0] || pos[1])
@@ -19,8 +53,7 @@ t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 		if ((best->pos_a <= len[0] / 2 && best->pos <= len[1] / 2)
 			&& (pos[0] && pos[1]))
 		{
-			ft_rotate(&gen.head_a);
-			ft_rotate(&gen.head_b);
+			ft_double_rotate(&gen);
 			write(1, "rr\n", 3);
 			pos[0]--;
 			pos[1]--;
@@ -34,33 +67,11 @@ t_stacks	ft_doit(t_stacks gen, t_node *best, int len[2], int pos[2])
 			pos[0]--;
 			pos[1]--;
 		}
-		else if ((best->pos_a > len[0] / 2) && pos[0])
-		{
-			ft_rev_rotate(&gen.head_a);
-			write(1, "rra\n", 4);
-			pos[0]--;
-		}
-		else if ((best->pos_a <= len[0] / 2) && pos[0])
-		{
-			ft_rotate(&gen.head_a);
-			write(1, "ra\n", 3);
-			pos[0]--;
-		}
-		else if ((best->pos > len[1] / 2) && pos[1])
-		{
-			ft_rev_rotate(&gen.head_b);
-			write(1, "rrb\n", 4);
-			pos[1]--;
-		}
-		else if ((best->pos <= len[1] / 2) && pos[1])
-		{
-			ft_rotate(&gen.head_b);
-			write(1, "rb\n", 3);
-			pos[1]--;
-		}
+		else
+			ft_doit2(&gen, &best, len, pos);
 	}
-	 ft_push(&gen.head_a, &gen.head_b);
-	 write(1, "pa\n", 3);
+	ft_push(&gen.head_a, &gen.head_b);
+	write(1, "pa\n", 3);
 	return (gen);
 }
 
@@ -71,11 +82,7 @@ int	push_swap(t_stacks gen, int leng)
 	int		len[2];
 
 	if (leng <= 5)
-	{
 		gen = light_push_swap(gen, leng);
-		if (leng == 3)
-			exit(EXIT_SUCCESS);
-	}
 	else
 		gen = ft_subsequence(gen);
 	gen = ft_tot_movs(gen);

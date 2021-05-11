@@ -12,15 +12,8 @@
 
 #include "push_swap.h"
 
-t_node	*ft_moves(t_node *stack)
+t_node	*ft_moves2(t_node *stack, t_node *scroll)
 {
-	int len_a = stack->len_a;
-	int len_b = stack->len_b;
-	t_node	*scroll;
-
-	if (len_a == -1 || len_b == -1)
-		return (0);
-	scroll = stack;
 	while (scroll)
 	{
 		if (scroll->pos <= stack->len_b / 2)
@@ -41,6 +34,21 @@ t_node	*ft_moves(t_node *stack)
 	return (scroll);
 }
 
+t_node	*ft_moves(t_node *stack)
+{
+	int		len_a;
+	int		len_b;
+	t_node	*scroll;
+
+	len_a = stack->len_a;
+	len_b = stack->len_b;
+	if (len_a == -1 || len_b == -1)
+		return (0);
+	scroll = stack;
+	scroll = ft_moves2(stack, scroll);
+	return (scroll);
+}
+
 t_stacks	ft_tot_movs(t_stacks gen)
 {
 	gen.head_b->movs_B = 0;
@@ -52,10 +60,36 @@ t_stacks	ft_tot_movs(t_stacks gen)
 	return (gen);
 }
 
+void	light_push_swap2(t_node **second, t_node **third, t_stacks *gen)
+{
+	if ((*second)->num < gen->head_a->num
+		 && (*second)->num < (*third)->num)
+	{
+		if (gen->head_a->num > (*third)->num)
+		{
+			ft_rotate(&gen->head_a);
+			write(1, "ra\n", 3);
+		}
+		else
+		{
+			ft_swap(&gen->head_a);
+			write(1, "sa\n", 3);
+		}
+	}
+	else if ((*second)->num < gen->head_a->num
+		 && (*second)->num > (*third)->num)
+	{
+		ft_rotate(&gen->head_a);
+		ft_swap(&gen->head_a);
+		write(1, "ra\n", 3);
+		write(1, "sa\n", 3);
+	}
+}
+
 t_stacks	light_push_swap(t_stacks gen, int len)
 {
-	t_node *second;
-	t_node *third;
+	t_node	*second;
+	t_node	*third;
 
 	gen.head_b = 0;
 	while (len > 3)
@@ -76,25 +110,7 @@ t_stacks	light_push_swap(t_stacks gen, int len)
 			write(1, "sa\n", 3);
 		}
 	}
-	else if (second->num < gen.head_a->num && second->num < third->num)
-	{
-		if (gen.head_a->num > third->num)
-		{
-			ft_rotate(&gen.head_a);
-			write(1, "ra\n", 3);
-		}
-		else
-		{
-			ft_swap(&gen.head_a);
-			write(1, "sa\n", 3);
-		}
-	}
-	else if (second->num < gen.head_a->num && second->num > third->num)
-	{
-		ft_rotate(&gen.head_a);
-		ft_swap(&gen.head_a);
-		write(1, "ra\n", 3);
-		write(1, "sa\n", 3);
-	}
-		return (gen);
+	else
+		light_push_swap2(&second, &third, &gen);
+	return (gen);
 }
