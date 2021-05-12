@@ -39,12 +39,12 @@ $(NAME): 	$(OBJS)
 $(NAME2): 	$(OBJS2)
 			$(CC) $(CFLAGS) -o $(NAME2) $(OBJS2)
 
-clean: 		$(MAKE) clean
+clean:
 			$(RM) $(OBJS) $(OBJS2)
 
 fclean: 	clean
 			$(RM) $(OBJS) $(OBJS2) $(NAME) $(NAME2)
 
-re: 		fclean $(NAME)
+re: 		fclean all
 
 .PHONY: 	all clean fclean re

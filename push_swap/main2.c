@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	len = ft_list_len(&init_a.head_a);
 	if (len == 1 || ac == 1)
 		exit(EXIT_SUCCESS);
+	ft_check_doubles(init_a.head_a);
 	if (len == 2)
 	{
 		if (init_a.head_a->num > init_a.head_a->next->num)
@@ -35,5 +36,7 @@ int	main(int ac, char **av)
 		init_a = light_push_swap(init_a, len);
 		exit(EXIT_SUCCESS);
 	}
+	if (ft_result(init_a.head_a) == 1)
+		exit (EXIT_SUCCESS);
 	push_swap(init_a, len);
 }

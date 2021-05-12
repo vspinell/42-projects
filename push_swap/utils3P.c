@@ -36,3 +36,17 @@ t_node	*ft_init_flags(t_node *stack_a)
 	tmp = stack_a;
 	return (tmp);
 }
+
+int	ft_result(t_node *head_a)
+{
+	if (head_a == 0)
+		exit(0);
+	while (head_a->next)
+	{
+		if (head_a->num < head_a->next->num)
+			head_a = head_a->next;
+		else
+			return (0);
+	}
+	return (1);
+}

@@ -90,6 +90,6 @@ int			ft_swap(t_node **stack);
 int			ft_rotate(t_node **head);
 int			ft_rev_rotate(t_node **head);
 int			ft_push(t_node **dst, t_node **src);
-int			ft_result(t_stacks *stacks);
+int			ft_result(t_node *stacks);
 
 #endif

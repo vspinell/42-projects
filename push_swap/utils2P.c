@@ -61,9 +61,11 @@ int	ft_check_str(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
+		if (ft_isdigit(str[i]) || str[i] == ' '
+			 || (str[i] == '-' && ft_isdigit(str[i + 1])))
+			i++;
+		else
 			return (0);
-		i++;
 	}
 	return (1);
 }
