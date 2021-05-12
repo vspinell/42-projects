@@ -17,6 +17,8 @@ int	main(int ac, char **av)
 	t_head	stacks;
 
 	stacks.head_a = ft_stack(ac, av);
+	if (stacks.head_a == 0)
+		exit(EXIT_SUCCESS);
 	if (checker(stacks) == -1)
 	{
 		write(1, "Error\n", 6);
