@@ -1,0 +1,121 @@
+version: "3.3"
+services:
+    db:
+        build:
+            context: requirements/mariadb
+            dockerfile: Dockerfile
+        container_name: db
+        volumes:
+            - "/home/vspinell/data/db_data:/mariadb/"
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        expose:
+            - "3306"
+        networks:
+            - mynet
+    php:
+        volumes:
+            - "/home/vspinell/data:/var/www/html"
+        build:
+            context: requirements/wordpress
+            dockerfile: Dockerfile
+        container_name: wordpress
+        tty: true
+        restart: unless-stopped
+        expose:
+            - "9000"
+        depends_on:
+                - db
+        environment:
+                WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+                WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+                WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+                WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+                WORDPRESS_PATH: ${WORDPRESS_PATH}
+                WORDPRESS_USER_LOGIN: ${WORDPRESS_USER_LOGIN}
+                WORDPRESS_USER_MAIL: ${WORDPRESS_USER_MAIL}
+                WORDPRESS_USER_ROLE: ${WORDPRESS_USER_ROLE}
+                WORDPRESS_USER_PASSWD: ${WORDPRESS_USER_PASSWD}
+        networks:
+            - mynet
+    nginx:
+        build:
+            context: requirements/nginx
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        container_name: nginx
+        command: [nginx, '-g', 'daemon off;']
+        volumes:
+            - "/home/vspinell/data:/var/www/html"
+        ports: 
+          - "443:443"
+        depends_on:
+            - db
+            - php
+        networks:
+            - mynet
+    redis:
+        build:
+            context: requirements/bonuses/redis
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        container_name: redis
+        expose: 
+            - "6379"
+        networks:
+            - mynet
+    vsftpd:
+        container_name: vsftpd
+        build:
+            context: ./requirements/bonuses/vsftpd
+            dockerfile: Dockerfile
+        tty: true
+        volumes:
+            - "/home/vspinell/data/:/var/www/html/wordpress"
+        expose:
+            - "20"
+        restart: unless-stopped
+        networks:
+            - mynet
+    ftp:
+        container_name: ftp
+        build:
+            context: ./requirements/bonuses/additional_service
+            dockerfile: Dockerfile
+        tty: true
+        expose:
+            - "21"
+        restart: unless-stopped
+        networks:
+            - mynet
+volumes:
+    php:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/vspinell/data/"
+    db_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/vspinell/data/"
+    nginx:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/vspinell/data/"
+    vsftpd:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "home/vspinell/data/"
+networks:
+    mynet:
