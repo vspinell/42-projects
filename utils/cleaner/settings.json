@@ -1,0 +1,8 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.indentationMode": "tab",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+    "workbench.colorTheme": "Electron",
+    "C_Cpp.default.cppStandard": "c++11",
+}
