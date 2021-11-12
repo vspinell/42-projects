@@ -1,25 +1,43 @@
-SRCS			=	ClassContact.cpp \
-					ClassRubrica.cpp \
-					phonebook.cpp
-OBJS			= $(SRCS:.cpp=.o)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fulloa-s <fulloa-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/10 16:46:02 by fulloa-s          #+#    #+#              #
+#    Updated: 2021/11/12 11:29:00 by vspinell         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CXX				= clang++
-RM				= rm -f
-CXXFLAGS		= -Wall -Wextra -Werror -I.
+NAME			=		phonebook
 
-NAME			= phoneboook
+SRCS			=		ClassContact.cpp \
+						ClassRubrica.cpp \
+						phonebook.cpp
 
-all:			$(NAME)
+CXX				=		clang++
 
-$(NAME):		$(OBJS)
-				$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+CXXFLAGS		=		-Wall -Wextra -Werror -std=c++98
 
-clean:
-				$(RM) $(OBJS)
+OBJCS			=		$(SRCS:.cpp=.o)
 
-fclean:			clean
-				$(RM) $(NAME)
+RM				=		rm -f
 
-re:				fclean $(NAME)
+%.o				: 		%.cpp
+						@$(CXX) $(CXXFLAGS) -c $<
 
-.PHONY:			all clean fclean re
+$(NAME)			:		$(OBJCS)
+						@$(CXX) -o $(NAME) $(OBJCS)
+
+all				:		$(NAME)
+
+clean			:
+						@$(RM) $(OBJCS)
+
+fclean			:		clean
+						@$(RM) $(NAME) 
+
+re				:		fclean all
+
+.PHONY			:		all clean fclean re
