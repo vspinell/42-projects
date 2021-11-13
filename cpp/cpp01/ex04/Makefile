@@ -6,11 +6,11 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 11:35:58 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/13 11:57:40 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/13 15:10:29 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	MoarBrainz
+NAME	=	replace
 
 SRCS	=	main.cpp \
 
@@ -31,7 +31,7 @@ $(NAME)	:	$(OBJCS)
 all				:		$(NAME)
 
 clean			:
-						@$(RM) $(OBJCS)
+						@$(RM) $(OBJCS) *.replace
 
 fclean			:		clean
 						@$(RM) $(NAME)
