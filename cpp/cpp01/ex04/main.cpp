@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 12:09:01 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/13 15:17:11 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/13 15:28:59 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
 
 		std::string line;
 		std::string buff;
-		std::ifstream myfile ("test.txt");
+		std::ifstream myfile (pathfile);
 		std::ofstream newfile (pathfile + ".replace", std::ios::trunc);
 		if (myfile.is_open())
 		{
