@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 18:16:04 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/13 11:55:17 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/12 18:29:50 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/13 10:06:33 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WEAPON_H
+# define WEAPON_H
+
 #include <string>
+#include <iostream>
 
-int main()
-{
-	std::string str= "HI THIS IS BRAIN";
-	std::string	*stringPTR = &str;
-	std::string	&stringREF = str;
+class Weapon {
 
-	std::cout << "this is the address of the string (original): " << &str << std::endl;
-	std::cout << "this is the address of the stringREF (reference): " << &stringREF << std::endl;
-	std::cout << "this is the address of the stringPTR (pointer): " << stringPTR << std::endl;
-}
+	std::string	str;
+
+public:
+	Weapon(std::string name);
+	~Weapon();
+	const std::string& get_str() ;
+	void	set_str(std::string content);
+	
+};
+
+#endif
