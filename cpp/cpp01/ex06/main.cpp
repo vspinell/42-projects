@@ -12,13 +12,13 @@
 
 #include "Karen.hpp"
 
-int main()
+
+int main(int ac, char **av)
 {
-	Karen Karen;
-
-	Karen.complain("debug");
-	Karen.complain("error");
-	Karen.complain("warning");
-	Karen.complain("info");
-
+	if (ac == 2)
+	{
+		Karen K;
+		K.complain(av[1]);
+	}
+	return (0);
 }
