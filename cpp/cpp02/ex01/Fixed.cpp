@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:56:21 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/15 14:48:09 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:55:38 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ Fixed::Fixed() {
 
 	std::cout << "Default constructor called" << std::endl;
 	this->val = 0;
+}
+
+Fixed::Fixed(const int i) {
+
+	std::cout << "Int constructor called" << std::endl;
+	this->val = i << fractional_bits;
+}
+
+Fixed::Fixed(const float f) {
+
+	std::cout << "Float constructor called" << std::endl;
+	this->val = (int)(f * ( 1 << this->fractional_bits));
 }
 
 Fixed::~Fixed() {
@@ -44,4 +56,20 @@ Fixed& Fixed::operator=(const Fixed& p2) {
 	this->val = p2.val;
 	return *this;
 
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+{
+
+	os << obj.toFloat();
+	return os;
+}
+
+int Fixed::toInt( void ) const {
+	
+	return this->val >> fractional_bits;
+}
+
+float Fixed::toFloat( void ) const {
+	return (float)(this->val) / (1 << fractional_bits);
 }
