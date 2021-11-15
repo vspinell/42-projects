@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 15:22:23 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/13 16:15:46 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/15 11:03:17 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,12 @@ Karen::~Karen() {
 
 void Karen::complain( std::string level ) {
 	
-	int index = -1;
-	std::string levels[4] = {"debug", "info", "warning", "error"};
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
 	for (int i = 0; i < 4; i++)
 	{
 		if (levels[i] == level)
-			index = i;
-			//(this->*(actions[i]))();
-	}
-	while (index < 4)
-	{
-		switch (index)
-		{
-			case 0:
-				(this->*(actions[index]))();;
-				std::cout << std::endl;
-				break;
-			case 1:
-				(this->*(actions[index]))();
-				std::cout << std::endl;
-				break;
-			case 2:
-				(this->*(actions[index]))();
-				std::cout << std::endl;
-				break;
-			case 3:
-				(this->*(actions[index]))();
-				std::cout << std::endl;
-				break;
-			default :
-				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-				exit (1);
-		}
-		index++;
+			return (this->*(actions[i]))();;
 	}
 }
 

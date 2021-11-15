@@ -6,11 +6,11 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/12 11:35:58 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/13 15:21:30 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/15 10:53:16 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Karen
+NAME	=	KarenFilter
 
 SRCS	=	main.cpp \
 			Karen.cpp

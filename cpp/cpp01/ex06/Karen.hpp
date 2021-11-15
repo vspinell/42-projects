@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 15:22:39 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/13 15:42:52 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/15 10:52:49 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 class Karen {
 
