@@ -5,24 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 19:39:11 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/15 21:21:40 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/17 10:41:09 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/17 11:27:07 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
+
 
 int main()
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+	ClapTrap pino("Pino");
 	
-	return 0;
+	pino.attack("Ignazio");
+	
+	pino.takeDamage(10);
+
+	pino.beRepaired(10);
 }
