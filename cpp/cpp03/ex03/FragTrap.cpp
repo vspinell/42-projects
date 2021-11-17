@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 11:47:56 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:32:11 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/17 13:54:39 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/17 17:26:48 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
+FragTrap::FragTrap() {
+	
+}
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap("name") {
-	std::cout << "Scavtrap CONSTRUCTOR called" << std::endl;
+FragTrap::FragTrap(std::string name) : ClapTrap(name) 
+{
 	this->Hitpoints = 100;
-	this->Energy_points = 50;
-	this->Attack_damage	= 20;
+	this->Energy_points = 100;
+	this->Attack_damage	= 30;
+	std::cout << "FragTrap " << this->Name << " Constructor called" << std::endl;
 }
 
-ScavTrap::~ScavTrap() {
-	std::cout << "Scavtrap DESTRUCTOR called" << std::endl;
+FragTrap::~FragTrap() {
+	std::cout << "Fragtrap DESTRUCTOR called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &p1) : ClapTrap(p1) {
+FragTrap::FragTrap(const FragTrap &p1) : ClapTrap(p1) {
 	this->operator=(p1);
 }
 
-ScavTrap& ScavTrap::operator = (const ScavTrap &p1) {
+FragTrap& FragTrap::operator = (const FragTrap &p1) {
 
 	this->Name = p1.Name;
 	this->Hitpoints = p1.Hitpoints;
@@ -37,6 +41,6 @@ ScavTrap& ScavTrap::operator = (const ScavTrap &p1) {
 	return *this;
 }
 
-void ScavTrap::guardGate() {
-	std::cout << this->Name << " has entered in Gate keeper mode" << std::endl;
+void FragTrap::highFivesGuys(void) {
+	std::cout << "Give me a high five!" << std::endl;
 }

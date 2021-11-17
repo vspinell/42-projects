@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:39 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 13:55:04 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:32:04 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 FragTrap::FragTrap(std::string name) : ClapTrap("name") {
 	std::cout << "Fragtrap CONSTRUCTOR called" << std::endl;
-	this->Name = name;
 	this->Hitpoints = 100;
-	this->Energy_points = 50;
-	this->Attack_damage	= 20;
+	this->Energy_points = 100;
+	this->Attack_damage	= 30;
 }
 
 FragTrap::~FragTrap() {
@@ -38,6 +37,6 @@ FragTrap& FragTrap::operator = (const FragTrap &p1) {
 	return *this;
 }
 
-void FragTrap::guardGate() {
-	std::cout << this->Name << " has entered in Gate keeper mode" << std::endl;
+void FragTrap::highFivesGuys(void) {
+	std::cout << "Give me a high five!" << std::endl;
 }

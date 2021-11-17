@@ -6,18 +6,21 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 11:47:56 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:32:11 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:26:59 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap () {
+	
+}
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap("name") {
-	std::cout << "Scavtrap CONSTRUCTOR called" << std::endl;
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->Hitpoints = 100;
 	this->Energy_points = 50;
 	this->Attack_damage	= 20;
+	std::cout << "ScavTrap " << this->Name << " Constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
