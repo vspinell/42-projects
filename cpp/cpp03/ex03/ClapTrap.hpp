@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 21:27:18 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 15:48:00 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 12:14:28 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap {
 		void attack(std::string const & target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-	
+
 };
 
 #endif

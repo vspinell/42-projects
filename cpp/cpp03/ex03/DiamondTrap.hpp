@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 15:02:00 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:36:48 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:17:42 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap(const DiamondTrap &p1);
 		void attack(std::string const & target);
 		~DiamondTrap();
-		
 		void whoAmI();
 };
 

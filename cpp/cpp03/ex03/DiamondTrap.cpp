@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 15:02:03 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:45:55 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:23:56 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ DiamondTrap::DiamondTrap() {
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 	
 	this->_name = name;
-	this->Hitpoints = FragTrap::Hitpoints;
-	this->Energy_points = ScavTrap::Energy_points; 
-	this->Attack_damage = FragTrap::Attack_damage;
+	this->Hitpoints = 100;
+	this->Energy_points = 50; 
+	this->Attack_damage = 30;
 	std::cout << "DiamondTrap CONSTRUCTOR called" << std::endl;
 }
 
 DiamondTrap& DiamondTrap::operator = (const DiamondTrap &p1) {
-	this->Name = p1.Name;
+	this->_name = p1._name;
 	this->Hitpoints = p1.Hitpoints;
 	this->Energy_points = p1.Energy_points;
 	this->Attack_damage	= p1.Attack_damage;

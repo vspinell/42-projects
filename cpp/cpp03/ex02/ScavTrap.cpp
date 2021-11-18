@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scavtrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 11:47:56 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 13:14:39 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 12:20:44 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() {
+	
+}
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap("name") {
 	std::cout << "Scavtrap CONSTRUCTOR called" << std::endl;

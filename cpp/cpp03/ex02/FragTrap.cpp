@@ -6,12 +6,15 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:39 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:32:04 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 12:20:20 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() {
+	
+}
 
 FragTrap::FragTrap(std::string name) : ClapTrap("name") {
 	std::cout << "Fragtrap CONSTRUCTOR called" << std::endl;

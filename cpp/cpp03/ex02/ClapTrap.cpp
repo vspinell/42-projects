@@ -6,11 +6,15 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 10:41:43 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/17 17:31:59 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/18 12:19:38 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap() {
+	
+}
 
 ClapTrap::ClapTrap(std::string name) {
 	
