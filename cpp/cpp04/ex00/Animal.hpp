@@ -6,15 +6,16 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:51:27 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/18 17:32:25 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:08:37 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_H
-#define ANIMAL
+#define ANIMAL_H
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 class Animal {
 	protected:
@@ -24,8 +25,8 @@ class Animal {
 		~Animal();
 		Animal(const Animal &p1);
 		Animal& operator = (const Animal &p1);
-		void makeSound();
+		virtual void makeSound() const;
 		std::string getType() const;
-};
+}; 
 
 #endif

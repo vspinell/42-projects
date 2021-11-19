@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongWrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 17:27:36 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/19 12:42:27 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/19 13:04:40 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/19 13:04:41 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat() : Animal() {
+WrongCat::WrongCat() : WrongAnimal() {
 	
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
+	std::cout << "WrongCat constructor called" << std::endl;
+	this->type = "WrongCat";
 }
 
-Cat::~Cat() {
-	std::cout << "Cat destructor called" << std::endl;
+WrongCat::~WrongCat() {
+	std::cout << "WrongCat destructor called" << std::endl;
 }
 
-void		Cat::makeSound() const {
-	std::cout << "Miao" << std::endl;
+void		WrongCat::makeSound() const {
+	std::cout << "Miu Miu" << std::endl;
 }
 
-Cat::Cat(const Cat &p1) {
+WrongCat::WrongCat(const WrongCat &p1) {
 	this->operator=(p1);
 }
 
-Cat& Cat::operator = (const Cat &p1) {
+WrongCat& WrongCat::operator = (const WrongCat &p1) {
 	
 	this->type = p1.type;
 	return *this;
