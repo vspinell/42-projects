@@ -6,33 +6,41 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:49:42 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/19 14:06:19 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:24:53 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	int n = 4;
+	const Animal *animals[n];
+	
+	for (int i = 0; i < n; i++)
+	{
+		if (i < n / 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	for (int i = 0; i < n; i++)
+		delete animals[i];
 
-	std::cout << std::setfill('-') << std::setw(47) << " " << std::endl;
+	std::cout << "\n\n";
 
-	const WrongAnimal* meta2 = new WrongAnimal();
-	const WrongAnimal* x = new WrongCat();
+	Dog *a = new Dog();
+	Dog *b = new Dog(*a);
 
-	std::cout << i->getType() << " " << std::endl;
-	x->makeSound(); //will output the Wrongcat sound!
-	meta2->makeSound();
+	std::cout << "\n";
+
+	a->printaddress();
+	b->printaddress();
+	std::cout << "\n";
+	 delete a;
+
+
 }
