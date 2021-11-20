@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:49:42 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/20 19:24:53 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:41:14 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main()
 	for (int i = 0; i < n; i++)
 		delete animals[i];
 
-	std::cout << "\n\n";
+	std::cout << "\n--------------------------\n";
 
 	Dog *a = new Dog();
 	Dog *b = new Dog(*a);
@@ -41,6 +41,4 @@ int main()
 	b->printaddress();
 	std::cout << "\n";
 	 delete a;
-
-
 }

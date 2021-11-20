@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:15:20 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/20 19:13:02 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:39:35 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 Brain::Brain() {
 
-	std::cout << "Brain exist" << std::endl;
+	std::cout << "Brain exist" << std::endl << std::endl;
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = "Cibo";
 }
 
 Brain::~Brain() {
 
-	std::cout << "Brain deleted" << std::endl;
+	std::cout << "Brain deleted" << std::endl << std::endl;
 }
 
 Brain::Brain(const Brain &p1) {

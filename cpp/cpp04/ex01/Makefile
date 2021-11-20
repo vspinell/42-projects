@@ -6,7 +6,7 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/20 16:18:57 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/20 19:37:57 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,6 @@ SRCS			=		main.cpp \
 						Animal.cpp \
 						Dog.cpp \
 						Cat.cpp \
-						WrongAnimal.cpp \
-						WrongCat.cpp \
 						Brain.cpp
 
 CXX				=		clang++
