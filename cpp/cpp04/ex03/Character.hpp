@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 12:23:50 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 16:50:33 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/25 15:57:45 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/25 16:24:55 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_H
-#define ICE_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
-#include "AMateria.hpp";
+#include "ICharacter.hpp"
 
-class Ice : public AMateria {
+class Character : public ICharacter
+{
+	std::string	_name;
+	AMateria *_materias[4];
 	
 	public:
-		Ice();
-		Ice(const Ice &src);
-		~Ice();
+		Character();
+		Character(std::string name);
+		~Character();
+		Character(const Character &src);
 
-		Ice& operator = (const Ice &src);
-
-		AMateria* clone() const;
-		void use(ICharacter& target);
+		Character& operator = (const Character &src);
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 
 #endif

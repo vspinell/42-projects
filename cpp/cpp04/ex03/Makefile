@@ -6,18 +6,17 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/19 13:16:50 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/25 16:22:44 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=		Polymorphism
 
 SRCS			=		main.cpp \
-						Animal.cpp \
-						Dog.cpp \
-						Cat.cpp \
-						WrongAnimal.cpp \
-						WrongCat.cpp
+						Cure.cpp \
+						Ice.cpp \
+						Character.cpp \
+						AMateria.cpp \
 
 CXX				=		clang++
 

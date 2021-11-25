@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 12:23:50 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 16:50:33 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/25 14:22:43 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/25 16:48:40 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_H
-#define ICE_H
+#include "Cure.hpp"
 
-#include "AMateria.hpp";
+#include "Cure.hpp"
 
-class Ice : public AMateria {
+Cure::Cure() : AMateria("Cure") {
+
+	std::cout << "Cure's DEFAULT CONSTRUCTOR called" << std::endl;
+}
+
+Cure::~Cure() {
 	
-	public:
-		Ice();
-		Ice(const Ice &src);
-		~Ice();
+	std::cout << "Cure's DEFAULT DESTRUCTOR called" << std::endl;
+}
 
-		Ice& operator = (const Ice &src);
+AMateria* clone() const {
+	
+	AMateria *tmp = new Cure(*this);
+	return tmp;
+}
 
-		AMateria* clone() const;
-		void use(ICharacter& target);
-};
-
-#endif
+void Cure::use(ICharacter& target) {
+	
+	std::cout << "* heals " << target.getName() << "’s wounds *\n";
+}

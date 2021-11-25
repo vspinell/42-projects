@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 12:23:50 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 16:50:33 by vspinell         ###   ########.fr       */
+/*   Created: 2021/11/25 14:28:38 by vspinell          #+#    #+#             */
+/*   Updated: 2021/11/25 16:28:14 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_H
-#define ICE_H
+#include "Character.hpp"
 
-#include "AMateria.hpp";
-
-class Ice : public AMateria {
+Character::Character() {
 	
-	public:
-		Ice();
-		Ice(const Ice &src);
-		~Ice();
+}
 
-		Ice& operator = (const Ice &src);
-
-		AMateria* clone() const;
-		void use(ICharacter& target);
-};
-
-#endif
+Character::Character(std::string name) : _name(name) {
+}
