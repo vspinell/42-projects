@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 14:28:35 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 15:58:48 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 10:20:23 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ICHARACTER_H
 
 #include "AMateria.hpp"
+class AMateria;
 
 class ICharacter
 {

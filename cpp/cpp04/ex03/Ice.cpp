@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:32:49 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 15:03:05 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 11:55:20 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,21 @@ Ice::~Ice() {
 	std::cout << "Ice's DEFAULT DESTRUCTOR called" << std::endl;
 }
 
-AMateria* clone() const {
+Ice::Ice(const Ice &src) {
 	
-	AMateria *tmp = new Ice(*this);
-	return tmp;
+	this->operator=(src);
+}
+
+Ice& Ice::operator = (const Ice &src) {
+	
+	if (this != &src)
+		this->_type = src._type;
+	return *this;
+}
+
+AMateria* Ice::clone() const {
+	
+	return  (new Ice(*this));
 }
 
 void Ice::use(ICharacter& target) {

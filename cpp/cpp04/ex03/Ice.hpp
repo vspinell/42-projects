@@ -6,14 +6,15 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:23:50 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 16:50:33 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 10:17:36 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_H
 #define ICE_H
 
-#include "AMateria.hpp";
+#include "AMateria.hpp"
+
 
 class Ice : public AMateria {
 	

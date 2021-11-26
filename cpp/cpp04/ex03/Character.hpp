@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 15:57:45 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 16:24:55 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 10:48:46 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 class Character : public ICharacter
 {
 	std::string	_name;
-	AMateria *_materias[4];
+	AMateria *inventory[4];
 	
 	public:
 		Character();
-		Character(std::string name);
+		Character(std::string const & name);
 		~Character();
 		Character(const Character &src);
 

@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 11:56:56 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/25 15:46:25 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 10:20:19 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include "ICharacter.hpp"
 
 class ICharacter;
 

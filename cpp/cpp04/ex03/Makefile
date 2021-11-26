@@ -6,7 +6,7 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/25 16:22:44 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/26 12:50:35 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS			=		main.cpp \
 						Ice.cpp \
 						Character.cpp \
 						AMateria.cpp \
+						MateriaSource.cpp
 
 CXX				=		clang++
 
