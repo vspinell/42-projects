@@ -6,18 +6,14 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/11/26 15:23:54 by vspinell         ###   ########.fr        #
+#    Updated: 2021/11/26 16:03:35 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=		AMateria
+NAME			=		Polymorphism
 
 SRCS			=		main.cpp \
-						Cure.cpp \
-						Ice.cpp \
-						Character.cpp \
-						AMateria.cpp \
-						MateriaSource.cpp
+						Bureaucrat.cpp
 
 CXX				=		clang++
 

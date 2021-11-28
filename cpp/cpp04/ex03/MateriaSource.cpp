@@ -6,14 +6,14 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:12:40 by vspinell          #+#    #+#             */
-/*   Updated: 2021/11/26 12:55:10 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/11/26 15:42:53 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
 
-MateriaSource::MateriaSource() : IMateriaSource() {
+MateriaSource::MateriaSource() {
 
 	std::cout << "MateriaSource's CONSTRUCTOR called" << std::endl;
 	for (int i = 0; i < 4; i++)
