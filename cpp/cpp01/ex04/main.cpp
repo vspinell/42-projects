@@ -36,6 +36,7 @@ int main(int ac, char **av)
 				if (!myfile.eof())
 					buff += "\n";
 			}
+			myfile.close();
 			pos = buff.find(s1);
 			if (pos != std::string::npos)
 			{
