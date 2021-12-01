@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:27:11 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/01 14:24:14 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:54:50 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	Bureaucrat::incrementGrade( void ) {
 		--this->_grade;
 }
 
-void			Bureaucrat::signForm( Form &form) {
+void			Bureaucrat::signForm( AForm &form) {
 
 	try
 	{
@@ -95,6 +95,22 @@ void			Bureaucrat::signForm( Form &form) {
 		std::cerr << e.what() << '\n';
 	}
 	
+}
+
+void			Bureaucrat::executeForm(AForm const & form) const {
+	
+	if (!form.getStatus())
+	{
+		std::cout << "Form not signed" << std::endl;
+		return ;
+	}
+	else if (this->getGrade() <= form.getExecGrade())
+		std::cout << this->getName() << " executes " << form.getName() << std::endl;
+	else
+	{
+		std::cout << this->getName() << " cannot execute the form " << form.getName() << "because: ";
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 /*

@@ -47,7 +47,7 @@ class AForm
 
 		void				beSigned(Bureaucrat &b);
 		void				execute(Bureaucrat const & executor) const;
-		virtual void		actions( void ) = 0;
+		virtual void		actions( void ) const = 0;
 		
 	private :
 		std::string const	_name;

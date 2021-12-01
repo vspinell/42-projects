@@ -6,12 +6,12 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:27:46 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/01 14:43:01 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:24:27 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main()
 {
@@ -25,11 +25,11 @@ int main()
 		try
 		{
 			Bureaucrat b("Gulielmo", x);
-			Form f("Pratica per la 104", n, 3);
+			// AForm f("Pratica per la 104", n, 3);
 			std::cout << b << std::endl;
-			std::cout << f;
-			f.beSigned(b);
-			std::cout << f;
+			// std::cout << f;
+			// f.beSigned(b);
+			// std::cout << f;
 		
 		//activate to see the error
 			// b.signForm(f);

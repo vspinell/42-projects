@@ -85,6 +85,22 @@ void			AForm::beSigned(Bureaucrat &b) {
 	}
 }
 
+void		AForm::execute(Bureaucrat const & executor) const {
+
+	if (!this->getStatus())
+	{
+		std::cout << "Form not signed" << std::endl;
+		return ;
+	}
+	else if (executor.getGrade() <= this->getExecGrade())
+	{
+		executor.executeForm(*this);
+		this->actions();
+	}
+	else
+		throw AForm::GradeTooLowException();
+}
+
 unsigned int		AForm::getSignGrade( void ) const {
 	return this->_sign_grade;
 }
