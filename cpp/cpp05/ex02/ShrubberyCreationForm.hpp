@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:54:27 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/01 17:13:42 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:17:17 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@
 class ShrubberyCreationForm : public AForm
 {
 	public:
-		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string const target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &src);
 		~ShrubberyCreationForm();
 
-		ShrubberyCreationForm& operator = (const ShrubberyCreationForm &src);
 
 		void		actions( void ) const;
 
 	private:
 		std::string const _target;
+		
+		ShrubberyCreationForm();
+		ShrubberyCreationForm& operator = (const ShrubberyCreationForm &src);
 };
 
 #endif
