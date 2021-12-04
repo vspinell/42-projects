@@ -6,7 +6,7 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/12/02 15:31:01 by vspinell         ###   ########.fr        #
+#    Updated: 2021/12/04 12:22:57 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ clean			:
 						@$(RM) $(OBJCS)
 
 fclean			:		clean
-						@$(RM) $(NAME) 
+						@$(RM) $(NAME) *_shrubbery
 
 re				:		fclean all
 
