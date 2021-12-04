@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:27:11 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/01 16:54:50 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/04 21:43:46 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,10 @@ void			Bureaucrat::executeForm(AForm const & form) const {
 		return ;
 	}
 	else if (this->getGrade() <= form.getExecGrade())
+	{
 		std::cout << this->getName() << " executes " << form.getName() << std::endl;
+		form.actions();
+	}
 	else
 	{
 		std::cout << this->getName() << " cannot execute the form " << form.getName() << "because: ";
