@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 17:27:46 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/03 19:24:11 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:04:11 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,23 @@
 #include "Intern.hpp"
 
 
-int main()
+int main(int ac, char **av)
 {
-	try
+	if (ac == 2)
 	{
-		Intern someRandomIntern;
-		AForm* rrf;
-		rrf = someRandomIntern.makeForm(" presidential request", "Bender");
-		delete rrf;
+		try
+		{
+			Intern someRandomIntern;
+			AForm* rrf;
+			rrf = someRandomIntern.makeForm(av[1], "Bender");
+			std::cout << "The name of the form is: " << rrf->getName() << std::endl;
+			rrf->actions();
+			delete rrf;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:27:03 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/03 19:24:27 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/04 14:59:31 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,17 @@ AForm*	Intern::makeForm(std::string const formType, std::string const formTarget
 		pos = formType.find(forms[i]);
 		if (pos != std::string::npos)
 		{
+			std::cout << "Intern has created " << forms[i] << " form" << std::endl;
 			switch (i)
 			{
 				case 0:
 					ret = new RobotomyRequestForm(formTarget);
-					std::cout << "Intern has created the form: " << ret->getName() << std::endl;
 					break;
 				case 1:
 					ret = new PresidentialPardonForm(formTarget);
-					std::cout << "Intern has created the form: " << ret->getName() << std::endl;
 					break;
 				case 2:
 					ret = new ShrubberyCreationForm(formTarget);
-					std::cout << "Intern has created the form: " << ret->getName() << std::endl;
 					break;
 				default:
 					break;
