@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:39:34 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/08 17:06:11 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:31:43 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	caseInt(std::string const str)
 {
 	try
 	{
-		const int i = static_cast<const int>(std::stoi(str));
-		// std::cout << i % 256 << std::endl;
-		// int i = std::numeric_limits<int>::max + 1;
+		const long long int x = static_cast<const long long int>(atoll(str.c_str()));
+		if (x > std::numeric_limits<int>::max() || x < std::numeric_limits<int>::min())
+			throw (x);
+		const int i = static_cast<const int>(x);
 		if ((i % 256 >= 0 && i % 256 < 32) || (i % 127 == 0))
 			std::cout << "Char: not displaiable\n";
 		else if ((i % 256 >= 127 && i % 256 < 288) || i < 0)
@@ -42,9 +43,9 @@ void	caseInt(std::string const str)
 		std::cout << "Float: " << static_cast<float const>(i) << ".0f" << std::endl;
 		std::cout << "Double: " << static_cast<double const>(i) << ".0" << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(long long int& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e << ": out of range.";
 	}
 	
 }
