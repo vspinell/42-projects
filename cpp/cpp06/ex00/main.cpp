@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:39:34 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/09 13:31:43 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/13 11:41:14 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,56 @@ void	caseInt(std::string const str)
 	
 }
 
-// void	caseFloat(std::string const str)
-// {
-// 	try
-// 	{
-// 		const float f = static_cast<const float>();
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << e.what() << '\n';
-// 	}
+void	caseFloat(std::string const str)
+{
+	const float dou = static_cast<const float>(atof(str.c_str()));
+	const int d = static_cast<const int>(dou);
+	if ((d >= 0 && d < 32) || (d == 127))
+		std::cout << "Char: not displaiable\n";
+	else if ((d >= 127) || d < 0)
+		std::cout << "Char: impossible\n";
+	else
+		std::cout << "Char: " << static_cast<char const>(d) << std::endl;
+	if (dou > std::numeric_limits<int>::max() || dou <= std::numeric_limits<int>::min())
+		std::cout << "Int: impossible\n";
+	else
+		std::cout << "Int: " << d << std::endl;
+	if (static_cast<const float>(dou) - d == 0)
+		std::cout << "Float: " << dou << ".0f\n";
+	else
+		std::cout << "Float: " << dou << "f\n";
+	if (dou - static_cast<long long int const>(dou) == 0)
+		std::cout << "Double: " << dou << ".0\n";
+	else
+		std::cout << "Double: " << dou << "\n";
+}
+
+void	caseDouble(std::string str)
+{
+	const double dou = static_cast<const double>(atof(str.c_str()));
+	const long long int d = static_cast<const long long int>(dou);
+	if ((d >= 0 && d < 32) || (d == 127))
+		std::cout << "Char: not displaiable\n";
+	else if ((d >= 127) || d < 0)
+		std::cout << "Char: impossible\n";
+	else
+		std::cout << "Char: " << static_cast<char const>(d) << std::endl;
+	if (dou > std::numeric_limits<int>::max() || dou <= std::numeric_limits<int>::min())
+		std::cout << "Int: impossible\n";
+	else
+		std::cout << "Int: " << static_cast<const int>(d) << std::endl;
 	
-// }
+	if (dou - d == 0)
+		std::cout << "Float: " << static_cast<float const>(dou) << ".0f\n";
+	else
+		std::cout << "Float: " <<  static_cast<float const>(dou) << "f\n";
+	if (dou - static_cast<long long int const>(dou) == 0)
+		std::cout << "Double: " << dou << ".0\n";
+	else
+		std::cout << "Double: " << dou << "\n";
+
+
+}
 
 int	detectType(std::string str)
 {
@@ -89,8 +127,8 @@ int main(int ac, char **av)
 	{
 		case 1: caseChar(str);		break;
 		case 2: caseInt(str);		break;
-		// case 3: caseFloat(str);		break;
-		// case 4: caseDouble(str);	break;
+		case 3: caseFloat(str);		break;
+		case 4: caseDouble(str);	break;
 
 		default:
 			break;
