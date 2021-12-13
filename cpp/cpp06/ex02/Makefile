@@ -6,11 +6,11 @@
 #    By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 19:39:28 by vspinell          #+#    #+#              #
-#    Updated: 2021/12/08 17:05:23 by vspinell         ###   ########.fr        #
+#    Updated: 2021/12/13 12:41:31 by vspinell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=		scalar_conversion
+NAME			=		dinamic_cast
 
 SRCS			=		main.cpp \
 
