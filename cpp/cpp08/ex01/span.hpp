@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:43:12 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:41:42 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:56:27 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Span {
 		void	addNumber(const int n);
 		int		shortestSpan(void);
 		int		longestSpan( void );
+		void	printvector( void ) const;
 };
 
 

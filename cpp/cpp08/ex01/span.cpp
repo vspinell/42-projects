@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:40:02 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:17:19 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:05:44 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,10 @@ int	Span::longestSpan(void) {
 		}
 	}
 	return (longest);
+}
+
+void Span::printvector( void ) const {
+
+	for (unsigned long int i = 0; i < this->container.size(); i++)
+		std::cout << this->container[i] << std::endl;
 }

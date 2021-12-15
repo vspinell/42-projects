@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:49:12 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/15 12:49:07 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:09:17 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ int main()
 		Span myarr(n);
 		srand(time(0));
 		for (int i = 0; i < n; i++)
-			myarr.addNumber(rand() % n);
+			myarr.addNumber(rand() % n * 2);
 		std::cout << myarr.shortestSpan() << std::endl;
 		std::cout << myarr.longestSpan() << std::endl;
-
 	}
 	catch(const char * e)
 	{
