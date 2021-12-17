@@ -6,7 +6,7 @@
 /*   By: vspinell <vspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 09:48:56 by vspinell          #+#    #+#             */
-/*   Updated: 2021/12/14 12:58:22 by vspinell         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:44:41 by vspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ class Array {
 		Array(Array const &src) {
 			
 			std::cout << "copy costructor called\n";
+			this->array = NULL;
 			this->operator=(src);
 		}
 
