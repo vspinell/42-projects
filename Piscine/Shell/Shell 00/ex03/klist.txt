@@ -1,0 +1,5 @@
+Credentials cache: API:5836416B-E19E-402A-A1E6-F60D8EA860ED
+        Principal: vspinell@42ROMA.IT
+
+  Issued                Expires               Principal
+Oct 20 20:45:35 2020  Oct 21 06:45:35 2020  krbtgt/42ROMA.IT@42ROMA.IT
