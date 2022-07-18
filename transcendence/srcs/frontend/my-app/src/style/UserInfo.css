@@ -1,0 +1,122 @@
+.user-info {
+  flex: 1 1 auto;
+  overflow: auto;
+  color: black;
+  background-color: #ede9e9;
+}
+
+.user-info-body {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.settings-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 80%;
+}
+
+.settings-menu {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.account-settings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-left: 5%;
+  
+}
+
+.settings-twofa {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+code {
+  color: black !important;
+}
+
+.settings-twofa-image {
+  margin-top: 5%;
+
+  margin-bottom: 5%;
+}
+
+.settings-twofa-image-descrip {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.settings-twofa-button {
+  margin-top: 30px !important;
+  align-self: center;
+}
+
+.overflow {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.user-info-header {
+  margin: 5% 0%;
+  align-self: center;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.user-info-header > .avatar-login {
+  height: 150px;
+  width: 150px;
+}
+
+.user-info-header > .user-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-info-header > .chat-icon {
+  height: 40px;
+  width: 40px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.user-info-header > .chat-icon-multiple {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.user-table {
+  align-self: center;
+  width: 80%;
+}
+
+.two-fa-title-sett {
+  margin-top: 5%;
+  align-self: center;
+}
+
+.loading-twoFa-set {
+  margin-top: 3%;
+  align-self: center;
+  height: 5% !important;
+  width: 5% !important;
+}

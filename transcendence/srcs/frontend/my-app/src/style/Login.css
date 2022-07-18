@@ -1,0 +1,148 @@
+
+.login--container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title--container {
+	margin-top: -200px;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login--title {
+  color: lightgray;
+  letter-spacing: 18px;
+  cursor: pointer;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+  font-family: myFont;
+  font-size: 60px;
+  margin-bottom: 80px;
+}
+
+.login--title::hover {
+  color: #f5c71a;
+}
+
+.login--parag {
+    color: lightgray;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-top: 35px;
+    margin-right: 15px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.login--button {
+  color: black;
+  font-weight: 700;
+  background-color: lightgray;
+  width: 200px;
+  height: 45px;
+  align-self: center;
+  font-size: 17px;
+}
+
+.login--button:hover {
+  background: linear-gradient(to right, white 50%, #f5c71a 50%) right;
+  background-size: 200%;
+  transition: 0.5s ease-out;
+  -webkit-transform: scale(1.1);
+  width: 250px;
+  height: 70px;
+  
+}
+
+
+.button--title {
+  font-family: gameFont;
+}
+
+
+.login--field {
+  width: 600px;
+  height: 300px;
+  border: 4px solid black;
+  background-color: aliceblue;
+}
+
+.player1 {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+  }
+
+  to {
+    margin-left: 30%;
+  }
+}
+
+.player2 {
+  animation-duration: 3s;
+  animation-name: slideout;
+}
+
+@keyframes slideout {
+  from {
+  }
+
+  to {
+    margin-left: 70%;
+  }
+}
+
+.trans {
+  transition: font-size 400ms ease-out;
+}
+
+.trans:hover {
+  font-size: 300px;
+}
+
+.login--ball {
+  float: left;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  animation: bounce_ball 5s linear infinite;
+}
+
+@keyframes bounce_ball {
+  0% {
+    margin-top: 30px;
+  }
+  20% {
+    margin-left: 250px;
+    margin-top: 250px;
+  }
+  45% {
+    margin-left: 490px;
+    margin-top: 30px;
+  }
+  48% {
+    margin-top: 0px;
+    margin-left: 475px;
+  }
+  75% {
+    margin-left: 225px;
+    margin-top: 250px;
+  }
+  100% {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+}
+
+

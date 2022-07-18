@@ -1,0 +1,161 @@
+fieldset {
+  margin: 0 auto;
+  width: max-content;
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-radius: 5px;
+}
+
+fieldset > legend {
+  padding: 0px 25px;
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+fieldset > input {
+  margin-bottom: 10px;
+}
+
+fieldset > select {
+  margin-bottom: 10px;
+}
+
+fieldset > .inputfalse {
+  background-color: rgb(249, 96, 96);
+}
+
+fieldset > button {
+  margin: 0px 10px;
+  background: #f5c71a !important;
+  color: black !important;
+  border-color: #f5c71a !important;
+  margin-top: 30px;
+}
+
+fieldset > label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  max-width: 310px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ArrowBack {
+  color: #f5c71a !important;
+  margin-bottom: 10px;
+}
+
+.ArrowBack:hover {
+  cursor: pointer;
+}
+
+.channelButtons {
+  margin-bottom: 5px;
+}
+
+.errorChannel {
+  color: #f5c71a;
+  margin-bottom: 10px;
+}
+
+.channel-settings {
+  width: 450px !important;
+  color: #000000cc;
+  overflow-y: auto;
+}
+
+.channel-settings-body {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.set-title {
+  text-align: center;
+  max-width: 350px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.set-sub-title {
+  text-align: center;
+}
+
+.channel-setting-add-user:hover {
+  cursor: pointer;
+}
+
+.channel-setting-add-user:hover > .channel-setting-add-user-text {
+  font-weight: 700;
+}
+
+.join-channel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.join-channel > p span {
+  color: white !important;
+}
+
+.clearfix-join {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.refresh-butt {
+  color: #d0a50a !important;
+}
+
+.refresh-butt:hover {
+  cursor: pointer;
+}
+
+.pass-button {
+  text-align: center;
+  align-self: center;
+  margin: 5%;
+}
+
+.description {
+  padding: 5px 20px;
+  max-height: 120px;
+  overflow: auto;
+  font-style: oblique;
+}
+
+.demo-password {
+  -webkit-animation: shake 0.5s linear;
+  animation: shake 0.5s linear;
+  -moz-animation: shake 0.5s linear;
+}
+
+@keyframes shake {
+  8%,
+  41% {
+    transform: translateX(-10px);
+  }
+  25%,
+  58% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  92% {
+    transform: translateX(5px);
+  }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+}

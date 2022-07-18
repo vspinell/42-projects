@@ -1,0 +1,80 @@
+#ButtonList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.Avatar:hover {
+  cursor: pointer;
+}
+
+.home--page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home--button {
+  font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  color: black;
+  background-color: orange;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transition: width 0.5s, height 0.5s;
+  font-weight: 700;
+  font-size: 1.7vh;
+}
+
+.home--button:hover {
+  width: 300px;
+  height: 100px;
+  color: black;
+  font-weight: 700;
+}
+
+.container-app-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pong-descr {
+  display: flex;
+  flex-direction: row;
+  color: white !important;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.pong-text {
+  width: 30%;
+  color: lightgray;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.pong-img {
+  border: 15px solid #ede9e9;
+  height: 400px;
+}
+
+.text--button--cont {
+  display: flex;
+  flex-direction: column;
+}

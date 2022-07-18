@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Nunito", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Nunito", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: black;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f5c71a;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cont {
+  height: calc(100vh - 68px - 30px);
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.real-body {
+  height: calc(100vh - 68px - 30px);
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+}
+
+.chat--sidebar {
+  display: flex;
+  justify-content: flex-end;
+  height: calc(100vh - 68px - 30px);
+}
+
+.SnackbarContainer-root {
+  top: 70px !important;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url(../../public/Player1UpBold-Meor.ttf);
+}
+
+@font-face {
+  font-family: "gameFont";
+  src: url(../../public/ARCADE_N.TTF);
+}

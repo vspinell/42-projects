@@ -1,0 +1,260 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// ###### USERS ######
+model User {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    login String @unique
+    email String @default("example@email.com")
+    image String
+
+    status                 String?  @default("offline")
+    isTwoFactorAuthEnabled Boolean? @default(false)
+
+    statistics  Statistic?
+    privateInfo PrivateInfo?
+
+    // // // https://stackoverflow.com/questions/65162657/one-to-many-self-relation-in-prisma-schema
+    friendRequestsSent     User[] @relation("friendRequests", references: [id])
+    friendRequestsReceived User[] @relation("friendRequests", references: [id])
+    friends                User[] @relation("friends", references: [id])
+    friendsRelation        User[] @relation("friends", references: [id])
+    blockFriendSent        User[] @relation("blockedFriends", references: [id])
+    blockFriendReceived    User[] @relation("blockedFriends", references: [id])
+
+    receivedMessages PrivateMessage[] @relation(name: "receivedMessages")
+    sentMessages     PrivateMessage[] @relation(name: "sentMessages")
+
+    channels            UserOnChannel[]
+    channelMessages     ChannelMessage[]
+    channelMessagesRead ChannelMessagesRead[]
+
+    ownerOnChannel  Channel[]         @relation(name: "owner")
+    adminOnChannel  AdminOnChannel[]
+    mutedOnChannel  MutedOnChannel[]
+    bannedOnChannel BannedOnChannel[]
+
+    wins   Match[] @relation(name: "winner")
+    losses Match[] @relation(name: "loser")
+    @@map("users")
+}
+
+model PrivateInfo {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique
+
+    password            String?
+    socketIdChat        String?
+    twoFactorAuthSecret String?
+    twoFactorAuthUrl    String?
+}
+
+// ###### PRIVATE MESSAGES ######
+model PrivateMessage {
+    id         Int      @id @default(autoincrement())
+    text       String
+    sender     User?    @relation(name: "sentMessages", fields: [senderId], references: [id])
+    senderId   Int?
+    receiver   User?    @relation(name: "receivedMessages", fields: [receiverId], references: [id])
+    receiverId Int?
+    createdAt  DateTime @default(now())
+    read       Boolean? @default(false)
+}
+
+// ###### CHANNELS ######
+model Channel {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    name        String  @unique
+    description String?
+    image       String?
+
+    type channelType @default(public)
+    key  String?
+
+    owner   User? @relation(name: "owner", fields: [ownerId], references: [id])
+    ownerId Int?
+
+    messages ChannelMessage[]
+
+    users  UserOnChannel[]
+    admins AdminOnChannel[]
+    muted  MutedOnChannel[]
+    banned BannedOnChannel[]
+
+    @@map("channels")
+}
+
+//https://github.com/prisma/prisma/discussions/2236
+model ChannelMessage {
+    id                Int                   @id @default(autoincrement())
+    text              String
+    sender            User?                 @relation(fields: [senderId], references: [id])
+    senderId          Int?                  @map("sender")
+    channel           Channel?              @relation(fields: [channelId], references: [id])
+    channelId         Int?                  @map("channel")
+    createdAt         DateTime              @default(now())
+    isServerMessage   Boolean               @default(false)
+    usersReadMessages ChannelMessagesRead[]
+}
+
+model ChannelMessagesRead {
+    user             User           @relation(fields: [userId], references: [id])
+    userId           Int
+    channelMessage   ChannelMessage @relation(fields: [channelMessageId], references: [id])
+    channelMessageId Int
+    assignedAt       DateTime       @default(now())
+
+    @@id([userId, channelMessageId])
+}
+
+model UserOnChannel {
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int
+    channel    Channel  @relation(fields: [channelId], references: [id])
+    channelId  Int
+    assignedAt DateTime @default(now())
+    color      Color?   @relation(fields: [colorId], references: [id])
+    colorId    Int?
+
+    @@id([userId, channelId])
+}
+
+model AdminOnChannel {
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int
+    channel    Channel  @relation(fields: [channelId], references: [id])
+    channelId  Int
+    assignedAt DateTime @default(now())
+
+    @@id([userId, channelId])
+}
+
+model MutedOnChannel {
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int
+    channel    Channel  @relation(fields: [channelId], references: [id])
+    channelId  Int
+    assignedAt DateTime @default(now())
+
+    @@id([userId, channelId])
+}
+
+model BannedOnChannel {
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int
+    channel    Channel  @relation(fields: [channelId], references: [id])
+    channelId  Int
+    assignedAt DateTime @default(now())
+
+    @@id([userId, channelId])
+}
+
+// ###### STATISTICS ######
+model Statistic {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique
+
+    time        Int @default(0)
+    wins        Int @default(0)
+    losses      Int @default(0)
+    ladderLevel Int @default(0)
+
+    winsSpecial        Int @default(0)
+    lossesSpecial      Int @default(0)
+    ladderLevelSpecial Int @default(0)
+
+    achievements AchievementOnStatistic[]
+    matchHistory MatchOnStatistic[]
+}
+
+model Match {
+    id           Int     @id @default(autoincrement())
+    winningScore Int?
+    winner       User?   @relation(name: "winner", fields: [winnerId], references: [id])
+    winnerId     Int?
+    special      Boolean @default(false)
+
+    losingScore Int?
+    loser       User? @relation(name: "loser", fields: [loserId], references: [id])
+    loserId     Int?
+
+    createdAt DateTime @default(now())
+
+    statistic MatchOnStatistic[]
+}
+
+model MatchOnStatistic {
+    match       Match     @relation(fields: [matchId], references: [id])
+    matchId     Int
+    statistic   Statistic @relation(fields: [statisticId], references: [id])
+    statisticId Int
+    assignedAt  DateTime  @default(now())
+
+    @@id([matchId, statisticId])
+}
+
+model Achievement {
+    id          Int                      @id @default(autoincrement())
+    createdAt   DateTime                 @default(now())
+    updatedAt   DateTime                 @updatedAt
+    name        String                   @unique
+    description String?
+    statistics  AchievementOnStatistic[]
+}
+
+model AchievementOnStatistic {
+    achievement   Achievement @relation(fields: [achievementId], references: [id])
+    achievementId Int
+    statistic     Statistic   @relation(fields: [statisticId], references: [id])
+    statisticId   Int
+    assignedAt    DateTime    @default(now())
+
+    @@id([achievementId, statisticId])
+}
+
+model Color {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    code      String   @unique
+    name      String
+
+    UserOnChannel UserOnChannel[]
+}
+
+// ###### ENUMS ######
+enum channelType {
+    public
+    protected
+    private
+}
+
+// NESTED
+// https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
+// https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/use-custom-model-and-field-names#using-map-and-map-to-rename-fields-and-models-in-the-prisma-client-api
+
+//OPERATORS
+//https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#filter-conditions-and-operators

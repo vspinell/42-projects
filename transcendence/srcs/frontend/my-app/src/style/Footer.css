@@ -1,0 +1,13 @@
+footer {
+  width: 100%;
+  background: black;
+  color: lightgray;
+  font-weight: 600;
+  text-align: center;
+  min-height: 30px;
+}
+
+footer > small {
+  display: inline-block;
+  vertical-align: middle;
+}

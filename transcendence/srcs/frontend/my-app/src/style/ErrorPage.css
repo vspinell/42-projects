@@ -1,0 +1,38 @@
+.not-found-e {
+  flex: 1 1 auto;
+  overflow: auto;
+  color: black;
+  background-color: rgb(237, 233, 233);
+}
+
+.not-found-body-e {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.first-four-e {
+  margin: auto auto;
+  right: 150px;
+  top: -65px;
+  font-size: 200px;
+}
+
+.second-four-e {
+  align-self: center;
+  text-align: center;
+  margin: auto auto;
+  font-size: 180px;
+}
+
+.page-not-found-e {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.go-home-e {
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+}

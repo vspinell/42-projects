@@ -98,24 +98,24 @@ volumes:
         driver_opts:
             type: none
             o: bind
-            device: "home/vspinell/data/"
+            device: "/home/vspinell/data/"
     db_data:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: "home/vspinell/data/"
+            device: "/home/vspinell/data/"
     nginx:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: "home/vspinell/data/"
+            device: "/home/vspinell/data/"
     vsftpd:
         driver: local
         driver_opts:
             type: none
             o: bind
-            device: "home/vspinell/data/"
+            device: "/home/vspinell/data/"
 networks:
     mynet:

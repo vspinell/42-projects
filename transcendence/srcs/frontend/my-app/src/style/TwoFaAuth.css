@@ -1,0 +1,92 @@
+.two-fa {
+  flex: 1 1 auto;
+  overflow: auto;
+  color: black;
+  background-color: rgb(237, 233, 233);
+  height: calc(100vh - 68px - 30px);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badges > * {
+  margin-right: 8px;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.subtitle {
+  margin-top: 2%;
+}
+
+.loading-twoFa {
+  margin-top: 10%;
+  height: 15% !important;
+  width: 15% !important;
+}
+
+code {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.input {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  font-size: 24px;
+  text-align: center;
+  margin-right: 12px;
+  text-transform: uppercase;
+  color: #494949;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  background: #fff;
+  background-clip: padding-box;
+}
+
+.input:focus {
+  appearance: none;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(131 192 253 / 50%);
+}
+
+button {
+  appearance: none;
+  background: #0071e3;
+  border-radius: 980px;
+  text-align: center;
+  border: none;
+  color: #fff;
+  margin: 8px;
+  padding: 4px 11px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.47059;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #d6d6d6;
+  padding: 8px 16px;
+}

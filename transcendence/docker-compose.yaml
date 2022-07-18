@@ -1,0 +1,69 @@
+version: "3.5"
+services:
+  dev-db:
+    image: postgres:13
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    networks:
+      - my-net
+
+  backend:
+    depends_on:
+      - dev-db
+    build:
+      context: ./srcs/backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./srcs/backend/my-app:/my-app/
+    container_name: server
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+      - 5555:5555
+    environment:
+      UID: ${UID}
+      SECRET: ${SECRET}
+      REDIRECT_URI: ${REDIRECT_URI}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_TIME: ${JWT_EXPIRATION_TIME}
+      JWT_COOKIE_NAME: ${JWT_COOKIE_NAME}
+      IP_SERVER: ${IP_SERVER}
+      FRONTEND_PORT: ${FRONTEND_PORT}
+      BACKEND_PORT: ${BACKEND_PORT}
+    networks:
+      - my-net
+    # DEV
+    # command: sh -c "yarn && yarn start:dev"
+    #PROD
+    command: sh -c "yarn && yarn prisma migrate dev --name init && yarn build && yarn start:prod"
+
+
+  frontend:
+    build:
+      context: ./srcs/frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./srcs/frontend/my-app:/my-app
+    container_name: client
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    environment:
+      IP_SERVER: ${IP_SERVER}
+      REDIRECT_URL: ${REDIRECT_URL}
+      FRONTEND_PORT: ${FRONTEND_PORT}
+      BACKEND_PORT: ${BACKEND_PORT}
+    networks:
+      - my-net
+    #DEV
+    # command: sh -c "yarn && yarn start"
+    #PROD
+    command: sh -c "yarn && yarn build && yarn serve -s build"
+
+
+networks:
+  my-net:

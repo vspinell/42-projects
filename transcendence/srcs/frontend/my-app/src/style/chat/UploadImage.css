@@ -1,0 +1,24 @@
+.uploaded-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
+.input-upload {
+  width: 100px;
+}
+
+input[type="file"] {
+  color: rgba(0, 0, 0, 0);
+}
+
+.icon-button {
+  background-color: rgb(209, 208, 208) !important;
+  color: rgb(0, 0, 0) !important;
+  position: relative;
+  right: 15px;
+  bottom: 25px;
+  border: 0.5px solid rgb(0, 1, 0) !important;
+}
