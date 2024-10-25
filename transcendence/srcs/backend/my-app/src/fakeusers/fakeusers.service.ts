@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Controller, Get, Logger, Res } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User } from 'src/user/dto/user.dto';
 
 export const fakeUsers: {
 	id: number;
@@ -47,11 +46,11 @@ export const fakeUsers: {
 export class FakeUsersService {
 	private readonly logger = new Logger(FakeUsersService.name);
 	constructor(private prisma: PrismaService, private jwt: JwtService) {
-		// this.init();
+		this.init();
 	}
 
 	public async init() {
-		for (let user in fakeUsers) {
+		for (const user in fakeUsers) {
 			try {
 				await this.prisma.user.create({
 					data: {
@@ -86,13 +85,15 @@ export class FakeUsersService {
 							.then((ach) => ach.id),
 					},
 				});
-			} catch (e) {}
+			} catch (e) {
+				this.logger.error(e);
+			}
 		}
 	}
 
 	async createFakeUser(req: Request) {
 		this.logger.log('createFakeUser called');
-		for (let user of fakeUsers) {
+		for (const user of fakeUsers) {
 			const userSocketId = await this.prisma.user
 				.findUnique({
 					where: {
@@ -102,9 +103,13 @@ export class FakeUsersService {
 						privateInfo: true,
 					},
 				})
-				.then((user) => user.privateInfo.socketIdChat);
+				.then((user) => {
+					this.logger.debug(user);
+					return user.privateInfo.socketIdChat;
+				})
+				.catch((error) => this.logger.error(error));
 			if (!userSocketId) {
-				const jwtToken = await this.jwt.signAsync({ sub: user.id });
+				const jwtToken = await this.jwt.signAsync({ sub: user.id }, { expiresIn: '1d' });
 				req.res.cookie(`${process.env.JWT_COOKIE_NAME}`, jwtToken, { httpOnly: true }); //https://expressjs.com/en/api.html#res.cookie
 				return true;
 			}

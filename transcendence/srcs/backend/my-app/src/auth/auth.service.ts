@@ -120,30 +120,14 @@ export class AuthService {
 	}
 
 	async signToken(id: number, twoFaStep: boolean): Promise<Token> {
+		const payload = { sub: id, twoFaStep };
 		return {
-			access_token: await this.jwt.signAsync({ sub: id, twoFaStep }),
+			access_token: await this.jwt.signAsync(payload, { expiresIn: '1d' }),
 			refresh_token: '',
 		};
 	}
 
-	/* TO CALL: function signUp() {
-		fetch(
-		  `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signUp`,
-		  {
-			method: "POST",
-			headers: {
-			  "Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-			  login: "koffing",
-			  password: "qwe",
-			  email: "koffing@email.it",
-			}), // body data type must match "Content-Type" header
-		  }
-		).then((resp) => {});
-	  }
-	  */
-	async signUp(obj: SingUpData): Promise<boolean> {
+	async signUp(response: Response, obj: SingUpData): Promise<boolean> {
 		this.logger.log('signUp called');
 		if (
 			(await this.prisma.user.findFirst({
@@ -184,6 +168,11 @@ export class AuthService {
 					})
 					.then((ach) => ach.id),
 			},
+		});
+		await this.signToken(user.id, user.isTwoFactorAuthEnabled).then((ret) => {
+			response.cookie(`${process.env.JWT_COOKIE_NAME}`, ret.access_token, {
+				httpOnly: true,
+			});
 		});
 		return true;
 	}

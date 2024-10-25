@@ -2,11 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import LoggedContext from "../../context/Logged";
 
-export default function ProtectedRoute({
-  children,
-}: {
-  children: JSX.Element;
-}) {
+export default function ProtectedRoute({ children }: { children: JSX.Element }) {
   const [page, setPage] = useState<JSX.Element>(<></>);
   let location = useLocation();
 

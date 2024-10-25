@@ -27,12 +27,13 @@ model User {
     privateInfo PrivateInfo?
 
     // // // https://stackoverflow.com/questions/65162657/one-to-many-self-relation-in-prisma-schema
-    friendRequestsSent     User[] @relation("friendRequests", references: [id])
-    friendRequestsReceived User[] @relation("friendRequests", references: [id])
-    friends                User[] @relation("friends", references: [id])
-    friendsRelation        User[] @relation("friends", references: [id])
-    blockFriendSent        User[] @relation("blockedFriends", references: [id])
-    blockFriendReceived    User[] @relation("blockedFriends", references: [id])
+    friendRequestsSent     User[] @relation("friendRequests")
+    friendRequestsReceived User[] @relation("friendRequests")
+    friends                User[] @relation("friends")
+    friendsRelation        User[] @relation("friends")
+    blockFriendSent        User[] @relation("blockedFriends")
+    blockFriendReceived    User[] @relation("blockedFriends")
+
 
     receivedMessages PrivateMessage[] @relation(name: "receivedMessages")
     sentMessages     PrivateMessage[] @relation(name: "sentMessages")

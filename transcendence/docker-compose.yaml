@@ -38,10 +38,9 @@ services:
     networks:
       - my-net
     # DEV
-    # command: sh -c "yarn && yarn start:dev"
+    command: sh -c "yarn && yarn start:dev"
     #PROD
-    command: sh -c "yarn && yarn prisma migrate dev --name init && yarn build && yarn start:prod"
-
+    # command: sh -c "yarn && yarn prisma migrate dev --name init && yarn build && yarn start:prod"
 
   frontend:
     build:
@@ -60,10 +59,9 @@ services:
     networks:
       - my-net
     #DEV
-    # command: sh -c "yarn && yarn start"
+    command: sh -c "yarn && yarn start"
     #PROD
-    command: sh -c "yarn && yarn build && yarn serve -s build"
-
+    # command: sh -c "yarn && yarn build && yarn serve -s build"
 
 networks:
   my-net:

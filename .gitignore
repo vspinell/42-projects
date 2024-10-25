@@ -1,2 +1,6 @@
 .Ds_Store
 .vscode
+
+# cpp files
+*.o
+*.a

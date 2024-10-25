@@ -47,9 +47,9 @@ export class AuthController {
 	}
 
 	@Post('signUp')
-	async signUp(@Body() data: SingUpData): Promise<boolean> {
+	async signUp(@Req() req: Request, @Body() data: SingUpData): Promise<boolean> {
 		this.logger.log('signUp called');
-		return await this.authService.signUp(data);
+		return await this.authService.signUp(req.res, data);
 	}
 
 	@Get('signIn')

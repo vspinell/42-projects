@@ -68,8 +68,12 @@ export default function Login() {
           password: "qwe",
           email: "koffing@email.it",
         }),
+        credentials: "include",
       }
-    ).then((resp) => {});
+    ).then(
+      () =>
+        (window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/home`)
+    );
   }
 
   function signIn(): void {
@@ -95,12 +99,11 @@ export default function Login() {
           // >
           //   <div className="button--title">Login</div>
           // </LoginButton>
-          <button className="login--button" onClick={LoginHandler}>
+          <button className="login--button" onClick={signIn}>
             LOGIN
           </button>
         )}
-
-        {/* {!logged && (
+        {!logged && (
           <div id="ButtonList">
             <CustButton
               variant="outlined"
@@ -110,21 +113,21 @@ export default function Login() {
             >
               Fake User
             </CustButton>
-          </div>)} */}
+          </div>
+        )}
 
-          {/* {!logged && (
-            <div id="ButtonList">
-              <CustButton
-                variant="outlined"
-                Lock={true}
-                className="Button"
-                onClick={signUp}
-              >
-                Sign up
-              </CustButton>
-            </div>
-        )} */}
-
+        {!logged && (
+          <div id="ButtonList">
+            <CustButton
+              variant="outlined"
+              Lock={true}
+              className="Button"
+              onClick={signUp}
+            >
+              Sign up
+            </CustButton>
+          </div>
+        )}
       </div>
     </div>
   );
