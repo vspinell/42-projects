@@ -55,30 +55,48 @@ export default function Login() {
         (window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/home`)
     );
   }
-  function signUp(): void {
-    fetch(
-      `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signUp`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          login: "koffing",
-          password: "qwe",
-          email: "koffing@email.it",
-        }),
-        credentials: "include",
+
+  async function signUp(): Promise<Promise<void>> {
+    try {
+      const response = await fetch(
+        `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signUp`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            login: "koffing",
+            password: "qwe",
+            email: "koffing@email.it",
+          }),
+          credentials: "include",
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User signed up successfully:", data);
+        window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/home`;
+        // navigate("/home");
+      } else if (response.status === 409) {
+        // setError("User with this email already exists.");
+        console.log("User with this email already exists.");
+      } else {
+        // setError("An error occurred. Please try again.");
       }
-    ).then(
-      () =>
-        (window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/home`)
-    );
+    } catch (error) {
+      console.error("Fetch error:", error);
+      // setError("An error occurred. Please try again.");
+    }
   }
 
-  function signIn(): void {
-    window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signIn?login=koffing&password=qwe`;
-  }
+  // function signIn(): void {
+  //   window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signIn?login=koffing&password=qwe`;
+  // }
+
+  const signIn = () => {
+    navigate("/signin");
+  };
 
   function LoginHandler() {
     window.location.href = `${process.env.REACT_APP_REDIRECT_URL}`;
@@ -99,11 +117,14 @@ export default function Login() {
           // >
           //   <div className="button--title">Login</div>
           // </LoginButton>
-          <button className="login--button" onClick={signIn}>
-            LOGIN
-          </button>
+          <CustButton variant="outlined" Lock={true} className="Button" onClick={signIn}>
+            Sign In
+          </CustButton>
+          // <button className="Button" onClick={signIn}>
+          //   Sign in
+          // </button>
         )}
-        {!logged && (
+        {/* {!logged && (
           <div id="ButtonList">
             <CustButton
               variant="outlined"
@@ -114,7 +135,7 @@ export default function Login() {
               Fake User
             </CustButton>
           </div>
-        )}
+        )} */}
 
         {!logged && (
           <div id="ButtonList">

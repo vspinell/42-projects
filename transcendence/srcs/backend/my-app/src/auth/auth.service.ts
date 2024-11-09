@@ -1,4 +1,10 @@
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
+import {
+	HttpException,
+	HttpStatus,
+	Injectable,
+	Logger,
+	ConflictException,
+} from '@nestjs/common';
 import fetch from 'node-fetch';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
@@ -127,17 +133,20 @@ export class AuthService {
 		};
 	}
 
-	async signUp(response: Response, obj: SingUpData): Promise<boolean> {
+	async signUp(
+		response: Response,
+		obj: SingUpData,
+	): Promise<boolean | { userId: number; twoFaStep: boolean }> {
 		this.logger.log('signUp called');
-		if (
-			(await this.prisma.user.findFirst({
-				where: {
-					login: obj.login,
-					email: obj.email,
-				},
-			})) !== null
-		)
-			return false;
+		const userExists = await this.prisma.user.findFirst({
+			where: {
+				login: obj.login,
+				email: obj.email,
+			},
+		});
+		if (userExists) {
+			throw new ConflictException('User already exists');
+		}
 		const user = await this.prisma.user.create({
 			data: {
 				login: obj.login,
@@ -174,7 +183,10 @@ export class AuthService {
 				httpOnly: true,
 			});
 		});
-		return true;
+		return {
+			userId: user.id,
+			twoFaStep: user.isTwoFactorAuthEnabled,
+		};
 	}
 
 	/* TO CALL

@@ -52,7 +52,10 @@ export class TwoFactorAuthController {
 		if (await this.twoFactorAuthService.isCodeValid(code, req.user)) {
 			res.cookie(
 				`${process.env.JWT_COOKIE_NAME}`,
-				await this.jwt.signAsync({ sub: Object(req.user).id, twoFaStep: false }),
+				await this.jwt.signAsync(
+					{ sub: Object(req.user).id, twoFaStep: false },
+					{ expiresIn: '1d' },
+				),
 				{ httpOnly: true },
 			);
 			res.redirect(`http://${process.env.IP_SERVER}:${process.env.FRONTEND_PORT}/home`);

@@ -23,6 +23,7 @@ import ChatContext from "../context/Chat";
 import WatchGame from "./game/WatchGame";
 import WatchModeProtected from "./auth/WatchModeProtected";
 import ErrorPage from "./ErrorPage";
+import SignIn from "./SignInPage";
 import ProtectedTwoFa from "./auth/ProtectedTwoFa";
 
 export let audio: Audio;
@@ -91,6 +92,7 @@ export default function App() {
             >
               <Routes>
                 <Route path="/" element={!logged ? <Login /> : <AppBody />} />
+                <Route path="/signin" element={<SignIn />} />
                 <Route path="ErrorPage" element={<ErrorPage />} />
                 <Route path=":url" element={<CheckUrl />} />
                 <Route

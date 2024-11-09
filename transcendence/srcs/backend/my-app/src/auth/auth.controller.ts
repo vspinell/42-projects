@@ -7,6 +7,7 @@ import {
 	Query,
 	Req,
 	Res,
+	ConflictException,
 	UseGuards,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -47,27 +48,35 @@ export class AuthController {
 	}
 
 	@Post('signUp')
-	async signUp(@Req() req: Request, @Body() data: SingUpData): Promise<boolean> {
+	async signUp(
+		@Req() req: Request,
+		@Body() data: SingUpData,
+	): Promise<boolean | { userId: number; twoFaStep: boolean }> {
 		this.logger.log('signUp called');
-		return await this.authService.signUp(req.res, data);
+		try {
+			// return await this.authService.signUp(email, password);
+			return await this.authService.signUp(req.res, data);
+		} catch (error) {
+			if (error instanceof ConflictException) {
+				throw new ConflictException('User already exists');
+			}
+			throw error;
+		}
 	}
 
-	@Get('signIn')
-	async signIn(@Req() req: Request, @Query() data: SingInData): Promise<void> {
+	@Post('signIn')
+	async signIn(
+		@Req() req: Request,
+		@Body() data: SingUpData,
+	): Promise<boolean | { userId: number; twoFaStep: boolean }> {
 		this.logger.log('signIn called');
-		const obj = await this.authService.signIn(req.res, data);
-		if (
-			obj &&
-			obj != undefined &&
-			(obj as { userId: number; twoFaStep: boolean }).twoFaStep
-		) {
-			this.jwtService.decode(req.cookies[process.env.JWT_COOKIE_NAME]);
-			req.res.redirect(
-				`http://${process.env.IP_SERVER}:${process.env.FRONTEND_PORT}/twoFactorAuth`,
-			);
-		} else
-			req.res.redirect(
-				`http://${process.env.IP_SERVER}:${process.env.FRONTEND_PORT}/home`,
-			);
+		const payload: SingInData = {
+			'login': data.login,
+			'password': data.password,
+		};
+		this.logger.log(data);
+		const obj = await this.authService.signIn(req.res, payload);
+		this.logger.debug(obj);
+		return obj;
 	}
 }
