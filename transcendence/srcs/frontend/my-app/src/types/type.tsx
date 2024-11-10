@@ -1,5 +1,7 @@
 import { Howler } from "howler";
 
+export type AuthType = "signIn" | "signUp";
+
 export type User_type = {
   id: number;
   login: string;

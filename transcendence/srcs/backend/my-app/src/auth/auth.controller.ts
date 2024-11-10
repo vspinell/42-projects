@@ -67,15 +67,11 @@ export class AuthController {
 	@Post('signIn')
 	async signIn(
 		@Req() req: Request,
-		@Body() data: SingUpData,
+		@Body() data: SingInData,
 	): Promise<boolean | { userId: number; twoFaStep: boolean }> {
 		this.logger.log('signIn called');
-		const payload: SingInData = {
-			'login': data.login,
-			'password': data.password,
-		};
 		this.logger.log(data);
-		const obj = await this.authService.signIn(req.res, payload);
+		const obj = await this.authService.signIn(req.res, data);
 		this.logger.debug(obj);
 		return obj;
 	}

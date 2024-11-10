@@ -1,16 +1,54 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 .login--container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title--container {
-	margin-top: -200px;
-	display: flex;
-	flex-direction: column;
+  margin-top: -200px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.login-group {
+  min-width: auto;
+}
+
+.button-group {
+  /* min-width: auto; */
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  font-family: myFont;
+  font-size: 1em;
+  gap: 20px; /* Initial gap between buttons */
+}
+
+.button-group button {
+  border: 0.5px solid white;
+  width: 10em;
+  background-color: inherit;
+  color: white;
+  border-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.button-group button:hover {
+  color: black;
+  background-color: #fafafa;
+  font-weight: bold;
 }
 
 .login--title {
@@ -29,25 +67,15 @@
 }
 
 .login--parag {
-    color: lightgray;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.6;
-    margin-top: 35px;
-    margin-right: 15px;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.login--button {
-  color: black;
+  color: lightgray;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
   font-weight: 700;
-  background-color: lightgray;
-  width: 200px;
-  height: 45px;
-  align-self: center;
-  font-size: 17px;
+  line-height: 1.6;
+  margin-top: 35px;
+  margin-right: 15px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .login--button:hover {
@@ -57,14 +85,11 @@
   -webkit-transform: scale(1.1);
   width: 250px;
   height: 70px;
-  
 }
-
 
 .button--title {
   font-family: gameFont;
 }
-
 
 .login--field {
   width: 600px;
@@ -144,5 +169,3 @@
     margin-top: 30px;
   }
 }
-
-
