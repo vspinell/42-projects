@@ -6,8 +6,8 @@ import {
 	Post,
 	Query,
 	Req,
-	Res,
 	ConflictException,
+	NotFoundException,
 	UseGuards,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -69,10 +69,14 @@ export class AuthController {
 		@Req() req: Request,
 		@Body() data: SingInData,
 	): Promise<boolean | { userId: number; twoFaStep: boolean }> {
-		this.logger.log('signIn called');
-		this.logger.log(data);
-		const obj = await this.authService.signIn(req.res, data);
-		this.logger.debug(obj);
-		return obj;
+		try {
+			this.logger.log('signIn called');
+			this.logger.log(data);
+			const obj = await this.authService.signIn(req.res, data);
+			this.logger.debug(obj);
+			return obj;
+		} catch (error) {
+			if (error instanceof NotFoundException) throw new NotFoundException(data.login);
+		}
 	}
 }

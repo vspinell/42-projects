@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export interface ReqObj {
 	grant_type: string;
@@ -15,6 +15,7 @@ export class SingUpData {
 
 	@IsString()
 	@IsNotEmpty()
+	@MinLength(6)
 	password: string;
 
 	@IsEmail()
@@ -29,6 +30,7 @@ export class SingInData {
 
 	@IsString()
 	@IsNotEmpty()
+	@MinLength(6)
 	password: string;
 }
 

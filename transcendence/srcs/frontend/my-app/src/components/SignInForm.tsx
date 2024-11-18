@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../style/SignInForm.css";
 import { AuthType } from "../types/type";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 
 type AuthProps = {
   auth_type: AuthType | "";
@@ -10,22 +11,38 @@ export default function SignInForm({ auth_type }: AuthProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState({ dialog: false, message: "" });
+
+  function reset_error() {
+    setError((prev) => {
+      return {
+        dialog: false,
+        message: "",
+      };
+    });
+  }
+
+  function setDialogMsg(msg: string) {
+    setError((prev) => {
+      return {
+        dialog: true,
+        message: msg,
+      };
+    });
+  }
 
   async function signIn(auth: AuthType): Promise<Promise<void>> {
     try {
       let payload: any = {
-        login: "koffing",
-        password: "qwe",
+        login: username,
+        password,
       };
       if (auth == "signUp") {
         payload = {
           ...payload,
-          email: "koffing@email.it",
+          email,
         };
       }
-      console.log(payload);
-      console.log(auth);
       const response = await fetch(
         `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/${auth}`,
         {
@@ -40,37 +57,35 @@ export default function SignInForm({ auth_type }: AuthProps) {
       if (response.ok) {
         const { twoFaStep }: { userId: number; twoFaStep: boolean } =
           await response.json();
-        // console.log("User signed up successfully:", data);
         if (twoFaStep === true)
           window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/twoFactorAuth`;
         else
           window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_FRONTEND_PORT}/home`;
       } else if (response.status === 409) {
-        // setError("User with this email already exists.");
-        console.log("User with this email already exists.");
+        setDialogMsg(`User username ${username} already exists`);
+      } else if (response.status == 404) {
+        setDialogMsg(`User not found: ${username}`);
       }
     } catch (error) {
       console.error("Fetch error:", error);
-      setError("An error occurred. Please try again.");
+      setDialogMsg("An error occurred. Please try again.");
     }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    reset_error();
 
     // Basic form validation
     if (!username || !password || (!email && auth_type == "signUp")) {
-      setError("Please fill in all fields");
+      setDialogMsg("Please fill in all fields");
       return;
     }
 
     try {
-      console.log("Logging in with", { email, password });
       if (auth_type) signIn(auth_type);
-      alert("Signed in successfully!");
     } catch (err) {
-      setError("Invalid email or password");
+      setDialogMsg("Invalid email or password");
     }
   };
 
@@ -114,13 +129,25 @@ export default function SignInForm({ auth_type }: AuthProps) {
             </div>
           )}
         </div>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error.message && <p>{error.message}</p>}
         <div className="flex justify-between">
           <button type="submit" className="signin-btn">
             Submit
           </button>
         </div>
       </form>
+
+      <Dialog open={error.dialog} onClose={() => reset_error()}>
+        <DialogTitle>Error</DialogTitle>
+        <DialogContent>
+          <p>{error.message}</p>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => reset_error()} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

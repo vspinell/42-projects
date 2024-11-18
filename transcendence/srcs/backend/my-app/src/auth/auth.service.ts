@@ -4,6 +4,7 @@ import {
 	Injectable,
 	Logger,
 	ConflictException,
+	NotFoundException,
 } from '@nestjs/common';
 import fetch from 'node-fetch';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -141,11 +142,10 @@ export class AuthService {
 		const userExists = await this.prisma.user.findFirst({
 			where: {
 				login: obj.login,
-				email: obj.email,
 			},
 		});
 		if (userExists) {
-			throw new ConflictException('User already exists');
+			throw new ConflictException(`Username ${obj.login} already exists`);
 		}
 		const user = await this.prisma.user.create({
 			data: {
@@ -189,11 +189,6 @@ export class AuthService {
 		};
 	}
 
-	/* TO CALL
-	  function signIn() {
-		window.location.href = `http://${process.env.REACT_APP_IP_SERVER}:${process.env.REACT_APP_BACKEND_PORT}/api/auth/signIn?login=koffing&password=qwe`;
-	  }
-	  */
 	async signIn(
 		response: Response,
 		obj: SingInData,
@@ -207,7 +202,7 @@ export class AuthService {
 				privateInfo: true,
 			},
 		});
-		if (user === null) return false;
+		if (user === null) throw new NotFoundException(obj.login);
 		if (user.privateInfo.socketIdChat != null) {
 			this.logger.log('user already online');
 			throw new HttpException('', HttpStatus.CONFLICT);
